@@ -30,6 +30,7 @@
 
 # Misc
 *.png
+*.mkv
 
 # Debug files
 *.dSYM/

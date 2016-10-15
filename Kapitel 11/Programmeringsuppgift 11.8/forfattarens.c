@@ -1,3 +1,6 @@
+//Code from http://skansholm.com/CFranBorjan/uppgifter/kap11/uppg11-8.c
+//by Jan Skansholm
+
 #include <stdio.h>
 #define N 10
 

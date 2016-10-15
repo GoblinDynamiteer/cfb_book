@@ -1,3 +1,7 @@
+//Code from http://skansholm.com/CFranBorjan/uppgifter/kap8/uppg8-1.c
+//by Jan Skansholm
+
+
 #include <stdio.h>
 
 int main() {

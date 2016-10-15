@@ -1,3 +1,6 @@
+//Code from http://skansholm.com/CFranBorjan/uppgifter/kap9/uppg9-7.c
+//by Jan Skansholm
+
 #include <stdio.h>
  
 int main() {

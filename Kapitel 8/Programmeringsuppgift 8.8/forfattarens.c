@@ -1,3 +1,6 @@
+// Code from http://skansholm.com/CFranBorjan/uppgifter/kap8/uppg8-8.c
+// by Jan Skansholm
+
   #include <stdio.h>
   #define N 50
   int main() {

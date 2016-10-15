@@ -1,3 +1,6 @@
+//http://skansholm.com/CFranBorjan/uppgifter/kap8/uppg8-11.c
+//by Jan Skansholm
+
 #include <stdio.h> 
 
 void nollstall(int a[]) {

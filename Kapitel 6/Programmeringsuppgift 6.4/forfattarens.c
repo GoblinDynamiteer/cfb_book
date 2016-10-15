@@ -1,3 +1,7 @@
+//Code from http://skansholm.com/CFranBorjan/uppgifter/kap6/uppg6-4.c
+//by Jan Skansholm
+
+
 #include <stdio.h>
 #define MOMS 25.0
 #define EGEN_AVG 28.97

@@ -9,6 +9,7 @@ double sum(double a[], int antal){
 	return summa;
 }
 
+
 //funktion som summerar och retunerar värdet av alla element i kvadrat, för en array
 double kvad_sum(double a[], int antal){
 	double summa = 0;
@@ -20,7 +21,8 @@ double kvad_sum(double a[], int antal){
 
 
 
-
+//Code from http://skansholm.com/CFranBorjan/uppgifter/kap8/uppg8-7.c
+//by Jan Skansholm
 double sigma(double f[], int n) {
 	double term1 = kvad_sum(f, n);
 	double sum2 = sum(f, n);

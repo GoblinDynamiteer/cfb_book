@@ -1,3 +1,7 @@
+
+// Code from http://skansholm.com/CFranBorjan/uppgifter/kap8/uppg8-9.c
+// by Jan Skansholm
+
 #include <stdio.h>
 #define ANTAL_KOLUMNER 4
 

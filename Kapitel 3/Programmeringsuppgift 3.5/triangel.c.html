@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #0080FF;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #008000;
+}
+.sc4 {
+	color: #FF8000;
+}
+.sc5 {
+	font-weight: bold;
+	color: #00FF40;
+}
+.sc6 {
+	color: #80FFFF;
+}
+.sc9 {
+	color: #FFFF00;
+}
+.sc10 {
+	font-weight: bold;
+	color: #FF8040;
+}
+.sc11 {
+	color: #FFFFFF;
+}
+.sc16 {
+	color: #8000FF;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;math.h&gt; </span><span class="sc2">//för pow(x), cos(x), sqrt(x), fabs(x), M_PI
+</span><span class="sc9">#include &lt;stdio.h&gt;
+#define LT pow(10, -10) </span><span class="sc2">//"Litet tal", används för att se om sidor är lika i if-satser
+</span><span class="sc0">
+</span><span class="sc1">/*
+Ange sida a &amp; b, samt vinkel för en triangel. 
+beräkna sida c med cosinussatsen. 
+Bestäm om triangeln är likbent, liksidig eller oliksidig. 
+Skriv ut resultatet.
+
+sida c beräknas med
+
+c = sqrt(a^2 + b^2 -2ab * cos(vinkel)
+
+grader till radianer omvandlas med 
+x grader = (pi*x)/180
+
+bra för test:
+http://www.calculator.net/triangle-calculator.html
+
+för att få en liksidig triangel kan man sätta sida a=b samt vinkel=60
+för att få en likbent triangel kan man sätta sida a=b sant vinkel!=60
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">()</span><span class="sc0">
+</span><span class="sc10">{</span><span class="sc0">
+    </span><span class="sc16">float</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">,</span><span class="sc11">b</span><span class="sc10">,</span><span class="sc11">c</span><span class="sc10">,</span><span class="sc11">v</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//variabler för sida a,b,c samt vinkel v.
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange längd för sida a: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">a</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange längd för sida b: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">b</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange vinkeln v: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">v</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//omvandlar vinkeln till radianer för cos(x)
+</span><span class="sc0">    </span><span class="sc11">v</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">M_PI</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">v</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">/</span><span class="sc0"> </span><span class="sc4">180</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//beräkna sida c
+</span><span class="sc0">    </span><span class="sc11">c</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">sqrt</span><span class="sc10">(</span><span class="sc11">pow</span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc4">2</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">+</span><span class="sc0"> </span><span class="sc11">pow</span><span class="sc10">(</span><span class="sc11">b</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc4">2</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">-</span><span class="sc0"> </span><span class="sc4">2</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">b</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">cos</span><span class="sc10">(</span><span class="sc11">v</span><span class="sc10">));</span><span class="sc0">
+    </span><span class="sc1">/*tips från boken: använd det absoluta talet av skillnaden mellan sidorna och jämför mot ett litet tal (10^-10)
+    för att avgöra om sidorna är lika. Använd ej == pga att talen lagras i approximativ form (ej exakt) */</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">fabs</span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">-</span><span class="sc11">b</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc11">LT</span><span class="sc0"> </span><span class="sc10">&amp;&amp;</span><span class="sc0"> </span><span class="sc11">fabs</span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">-</span><span class="sc11">c</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc11">LT</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc2">//om a-b ~ 0 och a-c ~ 0 så är triangeln liksidig (alla sidor lika)
+</span><span class="sc0">        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Triangeln är liksidig!"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//om någon av sidorna minus en annan av sidorna är ~ 0 och inte första if-satsen uppfyllts så är triangeln likbent (två lika sidor)
+</span><span class="sc0">    </span><span class="sc5">else</span><span class="sc0"> </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">fabs</span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">-</span><span class="sc11">b</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc11">LT</span><span class="sc0"> </span><span class="sc10">||</span><span class="sc0"> </span><span class="sc11">fabs</span><span class="sc10">(</span><span class="sc11">b</span><span class="sc10">-</span><span class="sc11">c</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc11">LT</span><span class="sc0"> </span><span class="sc10">||</span><span class="sc0"> </span><span class="sc11">fabs</span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">-</span><span class="sc11">c</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc11">LT</span><span class="sc10">)</span><span class="sc0"> 
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Triangeln är likbent!"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//om ingen av de två första if-satserna har uppfyllts så är triangeln oliksidig (alla sidor har olika längd)
+</span><span class="sc0">    </span><span class="sc5">else</span><span class="sc0"> 
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Triangeln är oliksidig!"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"\nSida a: %.2f, sida b: %.2f, sida c: %.2f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">b</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">c</span><span class="sc10">);</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

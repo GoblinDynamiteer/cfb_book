@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/* Skriv ett program som läser in ett antal namn från tangentbordet 
+och sparar de inlästa namnen i en textfil 'personer.txt'. Varje namn
+ska stå på en egen rad. Om texfilen redan finns ska den inte skrivas
+över, utan namnen ska skrivas till i slutet.
+
+Kör programmet flera gånger och kontrollera textfilen med en text-editor */</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">person_inmatning</span><span class="sc10">[</span><span class="sc4">40</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc1">/*
+    Datatyp FILE för textfiler, fopen har argumenten "textfilnamn", och "mode": 
+    "a": append, skriver till slutet av en textfil om den redan existerar 
+    "r": read - öppnar textfil
+    "w": write - skriver över data i textfil (till skillnad mot "a")
+    */</span><span class="sc0">
+    </span><span class="sc11">FILE</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">personer_textfil</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fopen</span><span class="sc10">(</span><span class="sc6">"personer.txt"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"a"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">while</span><span class="sc10">(</span><span class="sc4">1</span><span class="sc10">){</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange ett namn: "</span><span class="sc10">);</span><span class="sc0">
+            </span><span class="sc1">/*
+            if-sats triggar om användaren matar in EOF? Använd fgets för att kunna slå in mellanslag
+            i namnet, scanf fungerar också, men isåfall bara för ett namn i taget, då den inte läser
+            in vittecken
+            */</span><span class="sc0">
+            </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">fgets</span><span class="sc10">(</span><span class="sc11">person_inmatning</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc4">40</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">stdin</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">==</span><span class="sc0"> </span><span class="sc5">NULL</span><span class="sc10">){</span><span class="sc0">
+                </span><span class="sc5">break</span><span class="sc10">;</span><span class="sc0">
+            </span><span class="sc10">}</span><span class="sc0"> 
+        </span><span class="sc2">//fputs skriver textsträngen person_inmatning tilll filen personer_textfil
+</span><span class="sc0">        </span><span class="sc11">fputs</span><span class="sc10">(</span><span class="sc11">person_inmatning</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">personer_textfil</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc2">//lägger till en newline efter personnamnet, så nästa inmatning blir på raden under
+</span><span class="sc0">        </span><span class="sc2">//fputs("\n", personer_textfil); 
+</span><span class="sc0">    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+
+</span><span class="sc1">/*
+Författarens: 
+
+int main() {
+  FILE *f = fopen("personer.txt", "a"); 
+  if (f == NULL) {
+    printf("Kan inte hitta filen");
+    exit(1);
+  }  
+  char s[100];
+  printf("? ");
+  while (fgets(s, 100, stdin) != NULL) {
+    fputs(s, f);
+    printf("? ");
+  }
+  fclose(f);
+} 
+
+*/</span></div></body>
+</html>

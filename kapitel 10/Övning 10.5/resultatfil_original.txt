@@ -1,0 +1,4 @@
+Linda Olsson 12 20 15 5
+Mikael Bergman 15 30
+Karin Jansson Fernandez 19 30 10 10
+Daniel Lindman 10 28 20

@@ -1,0 +1,18 @@
+Övning 5.1, Sida 95
+Skriv i pseudokod: 
+Mata in 100 tal, beräkna och skriv ut medelvärdet av dessa tal
+
+
+
+ange en variabel kallad k och sätt till 1
+ange en variabel kallad summa och sätt till 0
+upprepa nästa tre rader medan k är mindre än, eller lika med 100
+	läs in ett värde till n
+	sätt summa till att vara värdet av sig själv plus n
+	öka k med 1
+sätt summa till att vara värdet av sig själv dividerat med 100
+skriv ut summa
+
+
+
+schlütt!

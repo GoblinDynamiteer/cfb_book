@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include "temp.h"
+#define L "\n----------------------------------\n" 
+</span><span class="sc0">
+</span><span class="sc1">/*
+Programmeringsuppgift 7.1, Sida 146
+
+Skriv en modul som håller reda på aktuell temperatur.
+
+Modulen ska ha fyra funktioner:
+observation:            Rapportera uppmätt temp, kontroller att inmatade värden är rimliga
+                            3 parametrar: tid (timme och minut), temperatur
+aktuell_temp:       Returnera senaste inmatade temperatur
+obs_tim:                Returnera tid (timme) för senaste inmatade temperatur
+obs_min:                Returnera tid (minuter) för senaste inmatade temperatur
+
+Filer:
+temp_main.c
+temp.c
+temp.h
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">temp</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">timme</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">minuter</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">val</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">kor</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">while</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">kor</span><span class="sc10">){</span><span class="sc0"> </span><span class="sc2">//kör whilesatsen så länge variabel kor == 1
+</span><span class="sc0">        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"%sTEMPERATUROBSERVATION%sVal:\n1 -- Mata in observation\n2 -- Se senaste inmatning\n3 -- Avsluta\nVal: "</span><span class="sc10">,</span><span class="sc11">L</span><span class="sc10">,</span><span class="sc11">L</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,&amp;</span><span class="sc11">val</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc5">switch</span><span class="sc10">(</span><span class="sc11">val</span><span class="sc10">){</span><span class="sc0">
+            </span><span class="sc5">case</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">:</span><span class="sc0">
+                </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Mata in temperatur: "</span><span class="sc10">);</span><span class="sc0">
+                </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">temp</span><span class="sc10">);</span><span class="sc0">
+                </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Mata in timme: "</span><span class="sc10">);</span><span class="sc0">
+                </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">timme</span><span class="sc10">);</span><span class="sc0">
+                </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Mata in minuter: "</span><span class="sc10">);</span><span class="sc0">
+                </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">minuter</span><span class="sc10">);</span><span class="sc0">
+                </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">observation</span><span class="sc10">(</span><span class="sc11">timme</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">minuter</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">temp</span><span class="sc10">))</span><span class="sc0">
+                    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Inmatning OK!"</span><span class="sc10">);</span><span class="sc0">
+                </span><span class="sc5">else</span><span class="sc0">
+                    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"%s!! OBS Inmatning inte korrekt, försök igen !!"</span><span class="sc10">,</span><span class="sc11">L</span><span class="sc10">);</span><span class="sc0">
+                </span><span class="sc5">break</span><span class="sc10">;</span><span class="sc0">
+            </span><span class="sc5">case</span><span class="sc0"> </span><span class="sc4">2</span><span class="sc10">:</span><span class="sc0">
+                </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"%sSenaste observation: kl %d:%d - %d grader."</span><span class="sc10">,</span><span class="sc11">L</span><span class="sc10">,</span><span class="sc11">obs_tim</span><span class="sc10">(),</span><span class="sc11">obs_min</span><span class="sc10">(),</span><span class="sc11">aktuell_temp</span><span class="sc10">());</span><span class="sc0">
+                </span><span class="sc5">break</span><span class="sc10">;</span><span class="sc0">
+            </span><span class="sc5">case</span><span class="sc0"> </span><span class="sc4">3</span><span class="sc10">:</span><span class="sc0">
+                </span><span class="sc11">kor</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//Sätter kor till 0, while-satsen kommer avslutas.
+</span><span class="sc0">                </span><span class="sc5">break</span><span class="sc10">;</span><span class="sc0">
+            </span><span class="sc5">default</span><span class="sc10">:</span><span class="sc0">
+                </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Fel val!"</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

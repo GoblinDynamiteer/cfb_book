@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc7 {
+	color: #FF8409;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+#define N 100
+</span><span class="sc0">
+</span><span class="sc1">/* Övning 10.5, Sida 235
+
+Antag att man ska kunna ta bort elever från resultatfilen.
+Det ska man kunna göra genom att på tangentbordet bara
+skriva elevens namn utan poäng efter.
+
+Föreslå vilka justeringar man kan göra i programmet för att
+astadkomma detta.
+
+Tips: Undersök om det finns några tecken efter namnet på den
+inmatade raden. 
+
+Programmet för att byta i resultatfilen finns på sida 233 och 234
+
+resultatfil.txt
+Linda Olsson 12 20 15 5
+Mikael Bergman 15 30
+Karin Jansson Fernandez 19 30 10 10
+Daniel Lindman 10 28 20
+*/</span><span class="sc0">
+
+</span><span class="sc1">/* Författaren har en funktion (Sida 199) som han använder ofta, 
+Den kollar om sista tecknet i en sträng är newline '\n', om detta är fallet 
+byts tecknet ut till ett nolltecken '\0'. 
+(funktionen fgets kan ibland innehålla newline) 
+Om newline tas bort returneras 1 (strängen är komplett med nolltecken i slutet)
+Annars 0 (det kan finnas text kvar i buffert)
+*/</span><span class="sc0">
+</span><span class="sc11">_Bool</span><span class="sc0"> </span><span class="sc11">removeNewLine</span><span class="sc10">(</span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">[]){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">strlen</span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">-</span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//näst sista bokstaven i strängen
+</span><span class="sc0">    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">==</span><span class="sc0"> </span><span class="sc7">'\n'</span><span class="sc10">){</span><span class="sc0">
+        </span><span class="sc11">a</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc2">//printf("\nTest: removeNewLine returnerar 0, det kan finnas text i buffer!\n");
+</span><span class="sc0">    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc1">/* En annan funktion författaren använder (Sida 190) 
+Om man skriver in en längre text än x i fgets(string, x, stdin) så läggs
+resterande i en buffert som läggs in i nästa inläsning, om man använder denna funktion
+så rensas bufferten */</span><span class="sc0">
+</span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">clearBuffer</span><span class="sc10">(</span><span class="sc16">void</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">while</span><span class="sc0"> </span><span class="sc10">((</span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">getchar</span><span class="sc10">())</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc7">'\n'</span><span class="sc0"> </span><span class="sc10">&amp;&amp;</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc11">EOF</span><span class="sc10">)</span><span class="sc0">
+        </span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc2">//Liknande funktionen clearBuffer, fast för läsning från textfil
+</span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">clearBufferFil</span><span class="sc10">(</span><span class="sc11">FILE</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">f</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">while</span><span class="sc0"> </span><span class="sc10">((</span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fgetc</span><span class="sc10">(</span><span class="sc11">f</span><span class="sc10">))</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc7">'\n'</span><span class="sc0"> </span><span class="sc10">&amp;&amp;</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc11">EOF</span><span class="sc10">)</span><span class="sc0">
+        </span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc1">/* för att slippa använda
+    if (!removeNewLine(sträng))
+        clearBuffer();
+efter varje inläsning med fgets har författaren byggt en egen inläsningsfunktion (Sida 200)
+
+Funktionen ger returvärdet 1 vid en lyckad inläsning, annars 0 (vid EOF)
+den får parametrarna: strängen som ska läsas in, och 'n' för fgets(sträng, n, stdin)
+*/</span><span class="sc0">
+</span><span class="sc11">_Bool</span><span class="sc0"> </span><span class="sc11">radInput</span><span class="sc10">(</span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">[],</span><span class="sc0"> </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">n</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc2">//fgets returnerar NULL vid misslyckad inläsning
+</span><span class="sc0">    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">fgets</span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">n</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">stdin</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">==</span><span class="sc0"> </span><span class="sc5">NULL</span><span class="sc10">){</span><span class="sc0">
+        </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">   
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc1">/*om removeNewLine returnerar 0 (!inverterat) finns det text kvar i buffert, 
+    och clearBuffer-funktionen anropas */</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(!</span><span class="sc11">removeNewLine</span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">)){</span><span class="sc0"> 
+        </span><span class="sc11">clearBuffer</span><span class="sc10">();</span><span class="sc0">  
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc2">//Funktion som läser text från textfil till textsträng, returnerar 0 vid avslut
+</span><span class="sc11">_Bool</span><span class="sc0"> </span><span class="sc11">textfilTillString</span><span class="sc10">(</span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">a</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">n</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">FILE</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">f</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">fgets</span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">f</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">==</span><span class="sc0"> </span><span class="sc5">NULL</span><span class="sc10">){</span><span class="sc0">
+        </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(!</span><span class="sc11">removeNewLine</span><span class="sc10">(</span><span class="sc11">a</span><span class="sc10">)){</span><span class="sc0"> 
+        </span><span class="sc11">clearBufferFil</span><span class="sc10">(</span><span class="sc11">f</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc2">//funktion plockar ut elevnamnet från den inmatade raden. Inmatad rad kan se ut som "Kalle Karlsson 12 33 44 22"
+</span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">hittaNamn</span><span class="sc10">(</span><span class="sc16">const</span><span class="sc0"> </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">inmatning</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">namn_ut</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc1">/*strcspn(x,y) - anger hur många tecken som finns i x innan ett tecken i y hittas
+    Anger i detta fall hur många tecken som finns i den inmatade strängen, innan en siffra hittas
+    Ett mellanslag kommer hittas om det slogs in efter det inmatade namnet*/</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">antalTecken</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">strcspn</span><span class="sc10">(</span><span class="sc11">inmatning</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"0123456789"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//Temp-variabel för hållare av namn, sätts till antal tecken innan siffra i inmatning (+1 för nolltecken)
+</span><span class="sc0">    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">temp</span><span class="sc10">[</span><span class="sc11">antalTecken</span><span class="sc10">+</span><span class="sc4">1</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc2">//Sätter temp till lika med inmatningen, 0 till antalTecken tecken, sätter nolltecken efter 
+</span><span class="sc0">    </span><span class="sc11">strncpy</span><span class="sc10">(</span><span class="sc11">temp</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">inmatning</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">antalTecken</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">temp</span><span class="sc10">[</span><span class="sc11">antalTecken</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//Om temp har sista tecknet som mellanslag tas det bort (bygg om för om användare matar in flera mellanslag?)
+</span><span class="sc0">    </span><span class="sc5">if</span><span class="sc10">(</span><span class="sc11">isspace</span><span class="sc10">(</span><span class="sc11">temp</span><span class="sc10">[</span><span class="sc11">antalTecken</span><span class="sc10">-</span><span class="sc4">1</span><span class="sc10">])){;</span><span class="sc0">
+            </span><span class="sc11">temp</span><span class="sc10">[</span><span class="sc11">antalTecken</span><span class="sc10">-</span><span class="sc4">1</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//temp kopieras till namn_ut ett tecken i taget, som görs om till lowercase (gemen)
+</span><span class="sc0">    </span><span class="sc5">for</span><span class="sc10">(;</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">&lt;</span><span class="sc11">strlen</span><span class="sc10">(</span><span class="sc11">temp</span><span class="sc10">);</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">namn_ut</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">tolower</span><span class="sc10">(</span><span class="sc11">temp</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]);</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc11">namn_ut</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc2">//Egen version av programmet på sida 233
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc11">FILE</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">resultatfil</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fopen</span><span class="sc10">(</span><span class="sc6">"resultatfil.txt"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"r"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">tempfil_namn</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">elevInput</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">elevNamn</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">elevNamnFil</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc11">_Bool</span><span class="sc0"> </span><span class="sc11">NyElev</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc1">/* tmpnam genererar ett randomiserat namn. Av någon anledning innehåller namnet alltid "\" 
+    i början, vilket innebär att filen kommer hamna i roten på den disk som denna fil ligger i (sant?) */</span><span class="sc0">
+    </span><span class="sc11">tmpnam</span><span class="sc10">(</span><span class="sc11">tempfil_namn</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//jag väljer att byta ut första tecknet i tempfilen, så att den hamnar i samma katalog som c-filen.
+</span><span class="sc0">    </span><span class="sc11">tempfil_namn</span><span class="sc10">[</span><span class="sc4">0</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'A'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">FILE</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">tempfil</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fopen</span><span class="sc10">(</span><span class="sc11">tempfil_namn</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"w"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange Elevnamn och poäng: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">radInput</span><span class="sc10">(</span><span class="sc11">elevInput</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//Plocka ut namnet från inmatningen med funktionen hittaNamn
+</span><span class="sc0">    </span><span class="sc11">hittaNamn</span><span class="sc10">(</span><span class="sc11">elevInput</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">elevNamn</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//printf("hittat och Konverterat namn: %s\n",elevNamn);
+</span><span class="sc0">    </span><span class="sc2">//textfilTillString läser in texten från resultatfil till s, en rad i taget eller till N tecken lästs
+</span><span class="sc0">    </span><span class="sc11">NyElev</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">while</span><span class="sc10">(</span><span class="sc11">textfilTillString</span><span class="sc10">(</span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">resultatfil</span><span class="sc10">)){</span><span class="sc0">
+        </span><span class="sc2">//printf("while: %s\n", s); //test
+</span><span class="sc0">        </span><span class="sc2">//jämför inmatat namn med rad från texten, strcmp returnerar 0 om strängarna är samma (!inverterat i if-satsen)
+</span><span class="sc0">        </span><span class="sc11">hittaNamn</span><span class="sc10">(</span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">elevNamnFil</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc1">/* om den inmatade elevens namn hittas i textfilen skrivs hela inmatade raden till temp-filen
+        då returtecken tas bort från strängarna med funktionen removeNewLine, så skrivs ett \n i fprintf för att få nyrad
+        efter varje elev */</span><span class="sc0">
+        </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(!</span><span class="sc11">strcmp</span><span class="sc10">(</span><span class="sc11">elevNamnFil</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">elevNamn</span><span class="sc10">)){</span><span class="sc0">
+            </span><span class="sc1">/*strpbrk(x,y) returnerar position av det första tecknet som hittas i x, av något av tecknen i y
+            om tecknet inte hittas returneras NULL. I detta fall kollas om elevInput innehåller en siffra, om
+            ingen siffra hittas ska elevens namn raderas från texfilen */</span><span class="sc0">
+            </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">strpbrk</span><span class="sc10">(</span><span class="sc11">elevInput</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"0123456789"</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc5">NULL</span><span class="sc10">){</span><span class="sc0">
+                </span><span class="sc11">fprintf</span><span class="sc10">(</span><span class="sc11">tempfil</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"%s\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">elevInput</span><span class="sc10">);</span><span class="sc0">
+                </span><span class="sc11">NyElev</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+            </span><span class="sc10">}</span><span class="sc0">
+            </span><span class="sc2">//om ingen siffra hittas sätts NyElev till 1 för att eleven inte ska skrivas till temp 
+</span><span class="sc0">            </span><span class="sc5">else</span><span class="sc10">{</span><span class="sc0">
+                </span><span class="sc11">NyElev</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+            </span><span class="sc10">}</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+        </span><span class="sc5">else</span><span class="sc0"> </span><span class="sc10">{</span><span class="sc0">
+            </span><span class="sc11">fprintf</span><span class="sc10">(</span><span class="sc11">tempfil</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"%s\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc2">//för att få in den nya inmatningen till tempfilen (om den inte hittades i textfilen)
+</span><span class="sc0">    </span><span class="sc5">if</span><span class="sc10">(!</span><span class="sc11">NyElev</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc11">fprintf</span><span class="sc10">(</span><span class="sc11">tempfil</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"%s\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">elevInput</span><span class="sc10">);</span><span class="sc0"> </span><span class="sc2">//som if-satsen i while-loopen ovan
+</span><span class="sc0">    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc1">/*kopiera innehållet från temp-filen till resultatfilen 
+    Resultatfilen är öppnad som "r" -readonly, och temp som "w". Med freopen stänger programmet
+    och öppnar filen igen, man kan då sätta andra parametrar. 
+    freopen(filnamn, läsning, FILE variabel)
+    */</span><span class="sc0">
+    </span><span class="sc11">freopen</span><span class="sc10">(</span><span class="sc11">tempfil_namn</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"r"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tempfil</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">freopen</span><span class="sc10">(</span><span class="sc6">"resultatfil.txt"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"w"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">resultatfil</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//läs text från tempfilen till s, och skriv över resultatfilen med s
+</span><span class="sc0">    </span><span class="sc5">while</span><span class="sc10">(</span><span class="sc11">textfilTillString</span><span class="sc10">(</span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tempfil</span><span class="sc10">)){</span><span class="sc0">
+        </span><span class="sc11">fprintf</span><span class="sc10">(</span><span class="sc11">resultatfil</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"%s\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc2">//Stänger och raderar temp-filen, notera att filens namn ska användas i remove();
+</span><span class="sc0">    </span><span class="sc11">fclose</span><span class="sc10">(</span><span class="sc11">tempfil</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//system("pause");
+</span><span class="sc0">    </span><span class="sc11">remove</span><span class="sc10">(</span><span class="sc11">tempfil_namn</span><span class="sc10">);</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

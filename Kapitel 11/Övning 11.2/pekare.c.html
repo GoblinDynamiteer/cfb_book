@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/* 
+Övning 11.2, Sida 243
+
+Deklarera en variabel 'x' av typen float, initiera den till 5.8.
+Deklarera två pekare 'q1' och 'q2', som pekar till variabler av
+typen float.
+
+Låt q1 peka på variabeln x och låt q2 vara oinitierad.
+
+Försök skriva ut värderna för q1 och q2. Vad händer?
+-- Man får ett värde från bada utskrifterna
+
+Blir det någon skillnad om man initerar q2 till NULL
+-- Värdet av pekaren q2 blir 0 vid utskriften
+
+Ändra slutligen så att programmet bara skriver ut värdet
+av det variabeln q2 pekar på om det inte är en tom pekare.
+Hade detta fungerat om du inte initierat q2?
+-- Nej, den tilldelas ett slumpmässigt(?) värde om den inte initieras
+
+ */</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">float</span><span class="sc0"> </span><span class="sc11">x</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">5.8</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">q1</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">x</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">q2</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc5">NULL</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"pekare q1: %d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">q1</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">q2</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc5">NULL</span><span class="sc10">){</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"\npekare q2: %d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">q2</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

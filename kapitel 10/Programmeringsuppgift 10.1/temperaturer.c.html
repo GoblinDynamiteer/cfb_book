@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;limits.h&gt; </span><span class="sc2">//för INT_MIN
+</span><span class="sc9">#include &lt;math.h&gt; </span><span class="sc2">//för fmax
+</span><span class="sc9">#include "strings_text_v1.h" </span><span class="sc2">//eget funktionsbibliotek
+</span><span class="sc9">#define N 100
+</span><span class="sc0">
+</span><span class="sc1">/* Programmeringsuppgift 10.1, Sida 236
+
+En textfil innehåller temperaturer som uppmätts kl 13 under en månad,
+på en viss plats. Det finns en temperatur på varje rad
+Skriv ett program som läser filen och i kommando-
+fönstret visar den högsta temperaturen samt temperaturernas medelvärde.
+
+Namnet på filen ska läsas in från tangentbordet. 
+
+Info:
+temperaturer.txt
+23
+24
+21
+22
+19
+19
+22
+18
+24
+24
+22
+23
+21
+23
+22
+18
+18
+23
+24
+21
+22
+19
+19
+22
+18
+24
+24
+22
+23
+
+---
+Maxvärde: 24
+Medelvärde: 21,5
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc2">//s är hållare av text från textfilen
+</span><span class="sc0">    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">filnamn</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">rader</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">max_temp</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">INT_MIN</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tempSumma</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tempHallare</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange filnamn: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">radInput</span><span class="sc10">(</span><span class="sc11">filnamn</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">);</span><span class="sc0"> </span><span class="sc2">//finns i strings_text_v1.c
+</span><span class="sc0">    </span><span class="sc11">FILE</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">temperatur_fil</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fopen</span><span class="sc10">(</span><span class="sc11">filnamn</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"r"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">temperatur_fil</span><span class="sc0"> </span><span class="sc10">==</span><span class="sc0"> </span><span class="sc5">NULL</span><span class="sc10">){</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Kan inte hitta filen: %s, avslutar."</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">filnamn</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc11">exit</span><span class="sc10">(</span><span class="sc4">1</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">while</span><span class="sc10">(</span><span class="sc11">textfilTillString</span><span class="sc10">(</span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">temperatur_fil</span><span class="sc10">)){</span><span class="sc0"> </span><span class="sc2">//finns i strings_text_v1.c
+</span><span class="sc0">        </span><span class="sc2">//läser in siffran till tempHallare
+</span><span class="sc0">        </span><span class="sc11">sscanf</span><span class="sc10">(</span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">tempHallare</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc2">//summerar temperaturerna
+</span><span class="sc0">        </span><span class="sc11">tempSumma</span><span class="sc0"> </span><span class="sc10">+=</span><span class="sc0"> </span><span class="sc11">tempHallare</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc11">max_temp</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fmax</span><span class="sc10">(</span><span class="sc11">max_temp</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tempHallare</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc2">//räknar antal rader i textfilen
+</span><span class="sc0">        </span><span class="sc11">rader</span><span class="sc10">++;</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc2">//konstanten 176 är grader-tecknet, skrivs ut med %c - tempSumma/rader = medelvärdet, konverterar till float för decimalutskrift
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Max temperatur: %d%c\nMedelvärde temperatur: %.2f%c"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">max_temp</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc4">176</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc16">float</span><span class="sc10">)</span><span class="sc11">tempSumma</span><span class="sc10">/</span><span class="sc11">rader</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc4">176</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #293134; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/*
+Programmeringsuppgift 6.3, sida 120
+
+Skriv en _Bool funktion som heter primtal, som ger värde 1 eller 0
+Funktionen ska få ett heltal (&gt;0)
+*/</span><span class="sc0">
+
+</span><span class="sc2">//testar om ett tal är ett primtal, returnerar 1 om sant, 0 om falskt
+</span><span class="sc11">_Bool</span><span class="sc0"> </span><span class="sc11">primtal</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">t</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc5">for</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">k</span><span class="sc10">=</span><span class="sc4">2</span><span class="sc10">;</span><span class="sc11">k</span><span class="sc10">&lt;</span><span class="sc11">t</span><span class="sc10">;</span><span class="sc11">k</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">t</span><span class="sc0"> </span><span class="sc10">%</span><span class="sc0"> </span><span class="sc11">k</span><span class="sc0"> </span><span class="sc10">==</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">)</span><span class="sc0">
+            </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//funktionen avslutas när den ger sitt första returvärde (sant?)
+</span><span class="sc0">    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">tal</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange ett tal, för test om det är ett primtal: "</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tal</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">tal</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">primtal</span><span class="sc10">(</span><span class="sc11">tal</span><span class="sc10">))</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"%d är ett primtal!"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tal</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">else</span><span class="sc0"> 
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"%d är inte ett primtal!"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tal</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #293134; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;math.h&gt;
+#include &lt;time.h&gt; </span><span class="sc2">//för seed till rand
+</span><span class="sc9">#include "strings_text_v1.h" </span><span class="sc2">//eget funktionsbibliotek
+</span><span class="sc9">#define N 100
+</span><span class="sc0">
+</span><span class="sc1">/* Programmeringsuppgift 10.6, Sida 237
+
+En textfil innehåller en lista med personer, endast ett namn per rad
+Skriv ett program som slumpmässigt väljer ut en av personerna och
+skriver ut dennes namn.
+
+Tips: Räkna först raderna i filen, använd sedan standardfunktionen
+rand (se sida 105) för att slumpa fram en rad. Skriv sedan ut raden
+
+För att läsa om filen kan du använda freopen 
+
+personer_namn.txt:
+Ivar Zevulun
+Quintina Rowntree
+Yasser Porphyrios
+Scottie Adebayo
+Husein Viktor
+Alexei Euphemios
+Ram Mervin
+Yash Ariel
+Alexander Derrick
+Raniero Spiro
+Paula Georg
+Josef Paulina
+Elisabet Christoffer
+Rong Addison
+Gulzar Aeron
+Kyo Khurshid
+Hayden Head
+Qiu Chen
+Ron Jeremy
+Peter North
+Gili Issy
+Vic Jocelyn
+Rene Chifuniro
+
+23 rader
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">FILE</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">personfil</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fopen</span><span class="sc10">(</span><span class="sc6">"personer_namn.txt"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"r"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">rader</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">k</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">while</span><span class="sc10">(</span><span class="sc11">textfilTillString</span><span class="sc10">(</span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">personfil</span><span class="sc10">)){</span><span class="sc0">
+        </span><span class="sc11">rader</span><span class="sc10">++;</span><span class="sc0">
+        </span><span class="sc2">//printf("Rad: %2d - Namn: %s\n",rader, s);
+</span><span class="sc0">    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc11">freopen</span><span class="sc10">(</span><span class="sc6">"personer_namn.txt"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"r"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">personfil</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">srand</span><span class="sc10">(</span><span class="sc11">time</span><span class="sc10">(</span><span class="sc5">NULL</span><span class="sc10">));</span><span class="sc0">
+    </span><span class="sc11">k</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">rand</span><span class="sc10">()</span><span class="sc0"> </span><span class="sc10">%</span><span class="sc0"> </span><span class="sc11">rader</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//printf("Filen innhåller %d st rader (ska vara 23?)", rader);
+</span><span class="sc0">    </span><span class="sc11">rader</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">while</span><span class="sc10">(</span><span class="sc11">textfilTillString</span><span class="sc10">(</span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">personfil</span><span class="sc10">)){</span><span class="sc0">
+        </span><span class="sc11">rader</span><span class="sc10">++;</span><span class="sc0">
+        </span><span class="sc5">if</span><span class="sc10">(</span><span class="sc11">k</span><span class="sc10">==</span><span class="sc11">rader</span><span class="sc10">){</span><span class="sc0">
+            </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Slumpad person: %s (rad %d)"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">k</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+
+
+</span></div></body>
+</html>

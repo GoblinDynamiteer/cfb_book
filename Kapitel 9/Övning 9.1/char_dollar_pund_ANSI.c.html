@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc7 {
+	color: #FF8409;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/*
+Övning 9.1, Sida 188
+
+**ANSI**
+
+Skriv ett program som innehåller deklarationer av två char-variabler.
+De ska heta c1 och c2. Tilldela sedan ett dollartecken till c1 och ett
+pundtecken till c2. Går programmet att kompilera?! Om inte, förklara varför.
+
+Om du har möjlighet så prova med en texteditor som kan lagra programtexten
+antingen som LATIN_1 (ANSI) eller UTF-8.
+
+---
+Programmet går att kompilera i ANSI, men inte i UTF-8.
+UTF-8 har mer än ett tecken för $/£ (sant?)
+och char kan bara lagra ett enstaka tecken.
+
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">c1</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">c2</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">c1</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'$'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">c1</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'£'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc1">/*printf("c1:");
+    putchar(c1);
+    printf("\nc2:");
+    putchar(c2);*/</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

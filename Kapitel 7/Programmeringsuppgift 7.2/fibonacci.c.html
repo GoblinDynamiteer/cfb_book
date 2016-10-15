@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc2">//För att skriva ut linjer i printf med newline före och efter:
+</span><span class="sc9">#define L "\n---------------------------------------\n" 
+</span><span class="sc0">
+
+</span><span class="sc1">/*
+Programmeringsuppgift 7.2, Sida 146
+
+Skriv en funktion som varje gång man anropar den
+skriver ut nästa tal i Fibonacci-serien. Den ska börja på 
+det tredje talet. Använd två statiska variabler för att hålla
+reda på talen.
+
+Fibonacci-serien:
+En serie heltal där varje tal är summan av de två föregående
+
+ex: 2 3 5 8 13 21
+
+Funktionen main skriver ut de första 20 talen.
+
+*/</span><span class="sc0">
+
+</span><span class="sc2">//Statiska variabler för hållande av tal i serien
+</span><span class="sc16">static</span><span class="sc0"> </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">tal1</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc16">static</span><span class="sc0"> </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">tal2</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">2</span><span class="sc10">;</span><span class="sc0">
+
+</span><span class="sc2">//Funktion som returnerar ett Fibonacci-tal
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">fibbos_talfoljd</span><span class="sc10">(</span><span class="sc16">void</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">fibbo</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">tal1</span><span class="sc10">+</span><span class="sc11">tal2</span><span class="sc10">;</span><span class="sc0">  </span><span class="sc2">//Nästa tal i serien efter tal1 och tal2
+</span><span class="sc0">    </span><span class="sc11">tal1</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">tal2</span><span class="sc10">;</span><span class="sc0">                    </span><span class="sc2">//tal1 byter till tal2
+</span><span class="sc0">    </span><span class="sc11">tal2</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fibbo</span><span class="sc10">;</span><span class="sc0">                   </span><span class="sc2">//tal2 byter till det beräknade Fibonacci-talet
+</span><span class="sc0">    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc11">fibbo</span><span class="sc10">;</span><span class="sc0">                   </span><span class="sc2">//returnerar det beräknade Fibonacci-talet
+</span><span class="sc10">}</span><span class="sc0">
+
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">antal</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tal_pa_linje</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//Jag har valt att låta användaren mata in hur många tal man vill se i serien:
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Hur många fibbo-tal vill du se?: "</span><span class="sc10">);</span><span class="sc0"> 
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">antal</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"%s   Fibonacci-serien upp till %d%s"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">L</span><span class="sc10">,</span><span class="sc11">antal</span><span class="sc10">,</span><span class="sc11">L</span><span class="sc10">);</span><span class="sc0"> </span><span class="sc2">//L är en linje med returslag före och efter, definieras ovan
+</span><span class="sc0">    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">&lt;=</span><span class="sc0"> </span><span class="sc11">antal</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">                        </span><span class="sc2">//for-sats som körs 'antal' varv
+</span><span class="sc0">        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"%d\t\t"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">fibbos_talfoljd</span><span class="sc10">());</span><span class="sc0">                </span><span class="sc2">//Skriver ut det reurnerade talet från funktinen fibbos_talfoljd, och två tabb-slag (\t) för snygghet
+</span><span class="sc0">        </span><span class="sc11">tal_pa_linje</span><span class="sc10">++;</span><span class="sc0">
+        </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">tal_pa_linje</span><span class="sc0"> </span><span class="sc10">==</span><span class="sc0"> </span><span class="sc4">4</span><span class="sc10">){</span><span class="sc0">                             </span><span class="sc2">//om tre tal har skrivits på en rad, slås printas en ny rad ut, för snygghet i utskrift
+</span><span class="sc0">            </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"\n"</span><span class="sc10">);</span><span class="sc0">
+            </span><span class="sc11">tal_pa_linje</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"%s"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">L</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

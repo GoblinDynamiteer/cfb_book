@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #0080FF;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #008000;
+}
+.sc4 {
+	color: #FF8000;
+}
+.sc5 {
+	font-weight: bold;
+	color: #00FF40;
+}
+.sc6 {
+	color: #80FFFF;
+}
+.sc9 {
+	color: #FFFF00;
+}
+.sc10 {
+	font-weight: bold;
+	color: #FF8040;
+}
+.sc11 {
+	color: #FFFFFF;
+}
+.sc16 {
+	color: #8000FF;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/*
+Övning 3.4
+Sida 68 - Logiska uttryck
+
+Ange om ett paket som ska skickas med Postnord har tillåtna mått. 
+LängdMax=600mm
+LängdMin=140mm
+TjocklekMax=100mm 
+BreddMin=90mm
+Bredd+Längd+Tjocklek Max=900mm
+
+Skriv ut texten "Måtten OK", eller "Felaktiga mått"
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">()</span><span class="sc0">
+</span><span class="sc10">{</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">l</span><span class="sc10">,</span><span class="sc11">b</span><span class="sc10">,</span><span class="sc11">t</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//Variabler för paketets Längd, Bredd och Tjocklek
+</span><span class="sc0">    </span><span class="sc2">//Läs in data för variabler:
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange paketets längd: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">l</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange paketets bredd: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">b</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange paketets tjocklek: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">t</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//Testar om måtten uppfyller de satta kraven för att få skicka paketet
+</span><span class="sc0">    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">l</span><span class="sc0"> </span><span class="sc10">&gt;=</span><span class="sc0"> </span><span class="sc4">140</span><span class="sc0"> </span><span class="sc10">&amp;&amp;</span><span class="sc0"> </span><span class="sc11">l</span><span class="sc0"> </span><span class="sc10">&lt;=</span><span class="sc0"> </span><span class="sc4">600</span><span class="sc0"> </span><span class="sc10">&amp;&amp;</span><span class="sc0"> </span><span class="sc11">t</span><span class="sc0"> </span><span class="sc10">&lt;=</span><span class="sc0"> </span><span class="sc4">100</span><span class="sc0"> </span><span class="sc10">&amp;&amp;</span><span class="sc0"> </span><span class="sc11">b</span><span class="sc0"> </span><span class="sc10">&gt;=</span><span class="sc0"> </span><span class="sc4">90</span><span class="sc0"> </span><span class="sc10">&amp;&amp;</span><span class="sc0"> </span><span class="sc11">b</span><span class="sc0"> </span><span class="sc10">+</span><span class="sc0"> </span><span class="sc11">l</span><span class="sc0"> </span><span class="sc10">+</span><span class="sc0"> </span><span class="sc11">t</span><span class="sc0"> </span><span class="sc10">&lt;=</span><span class="sc0"> </span><span class="sc4">900</span><span class="sc10">)</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Måtten OK"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">else</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Felaktiga mått"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

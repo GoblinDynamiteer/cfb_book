@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #0080FF;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #008000;
+}
+.sc4 {
+	color: #FF8000;
+}
+.sc5 {
+	font-weight: bold;
+	color: #00FF40;
+}
+.sc6 {
+	color: #80FFFF;
+}
+.sc9 {
+	color: #FFFF00;
+}
+.sc10 {
+	font-weight: bold;
+	color: #FF8040;
+}
+.sc11 {
+	color: #FFFFFF;
+}
+.sc16 {
+	color: #8000FF;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;math.h&gt; </span><span class="sc2">//för logaritm log(x) och konstanten M_E (e)
+</span><span class="sc9">#include &lt;stdio.h&gt;
+#define LAMBDA log(2) / 5730 </span><span class="sc2">//Sätter konstanten LAMBDA för ämnet kol-14
+</span><span class="sc0">
+</span><span class="sc1">/*
+Ange hur många procent som återstår av isotopen kol-14 efter S år.
+S anges av användaren.
+
+mängen kvarvarande radioaktivt avfall n efter tid t beräknas med
+
+n = n0 * e^-(lambda * t)
+
+n0 är ämnets mängd vid tiden tiden 0
+lambda är en konstant för ett visst radioaktivt ämne och beräknas med
+
+lambda = ln(2) / T
+
+T är halveringstiden för ämnet
+För kol-14 är halveringstiden T = 5730 år.
+
+Test: Om vi sätter S=T=t så borde n bli hälften av ämnets vikt
+vi bestämmer n=50
+
+n = n0 * e^-(lambda * t) = 50 * e^-(ln(2) / 5730 * 5730)  = 50 * e^-(ln(2) = 25
+25/50 = 0.5 = 50%
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc0"> </span><span class="sc10">()</span><span class="sc0">
+</span><span class="sc10">{</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">S</span><span class="sc10">;</span><span class="sc0">  </span><span class="sc2">//Variabel för antal år, 
+</span><span class="sc0">    </span><span class="sc16">float</span><span class="sc0"> </span><span class="sc11">n0</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">50</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">n</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//n0 = materalets mängd vid tid noll, ett värde behövs(?) för att kunna beräkna återstående procent
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange antal år (S): "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">S</span><span class="sc10">);</span><span class="sc0"> </span><span class="sc2">//användaren sätter antal år
+</span><span class="sc0">    </span><span class="sc11">n</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">n0</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">pow</span><span class="sc10">(</span><span class="sc11">M_E</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">-</span><span class="sc11">LAMBDA</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">S</span><span class="sc10">);</span><span class="sc0"> </span><span class="sc2">//beräknar n enligt formel
+</span><span class="sc0">    </span><span class="sc2">//Skriver ut hur många procent som återstår av ämnet kol-14 efter S antal år:
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Efter %d antal år återstår %.2f procent av det radioaktiva ämnet kol-14"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">S</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">n</span><span class="sc10">/</span><span class="sc11">n0</span><span class="sc10">)*</span><span class="sc4">100</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

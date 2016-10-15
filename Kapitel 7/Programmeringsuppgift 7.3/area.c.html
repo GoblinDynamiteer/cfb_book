@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include "area.h"
+#include &lt;math.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/*
+Programmeringsuppgift 7.3, Sida 147
+
+Konstruera ett funktionsbibliotek 'area' som beräknar
+area för cirklar, trianglar och rektanglar
+
+Tips: Placera definition av konstanten PI i area.h så blir den allmänt tillgänglig
+(Onödigt, M_PI finns i math.h)
+
+Acirkel = pi r^2
+Atriangel = b*h/2
+
+*/</span><span class="sc0">
+
+
+</span><span class="sc2">//Funktioner för att beräkna area för rektangel, cirkel och triangel
+</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">area_rektangel</span><span class="sc10">(</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">bredd</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">hojd</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc11">bredd</span><span class="sc10">*</span><span class="sc11">hojd</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">area_cirkel</span><span class="sc10">(</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">radie</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc11">M_PI</span><span class="sc10">*</span><span class="sc11">radie</span><span class="sc10">*</span><span class="sc11">radie</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">area_triangel</span><span class="sc10">(</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">bas</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">hojd</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc11">bas</span><span class="sc10">*</span><span class="sc11">hojd</span><span class="sc10">/</span><span class="sc4">2</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

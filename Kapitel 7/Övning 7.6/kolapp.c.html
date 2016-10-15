@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include "kolapp.h"
+</span><span class="sc0">
+</span><span class="sc16">static</span><span class="sc0"> </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">sist</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc16">static</span><span class="sc0"> </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">betjanad</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">ta_lapp</span><span class="sc10">(</span><span class="sc16">void</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc10">++</span><span class="sc11">sist</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">betjana_kund</span><span class="sc10">(</span><span class="sc16">void</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">betjanad</span><span class="sc0"> </span><span class="sc10">==</span><span class="sc0"> </span><span class="sc11">sist</span><span class="sc10">)</span><span class="sc0">
+        </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc10">-</span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">else</span><span class="sc0"> 
+        </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc10">++</span><span class="sc11">betjanad</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc2">//funktion som återställer variablerna sist och betjanad
+</span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">init</span><span class="sc10">(</span><span class="sc16">void</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc11">sist</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">betjanad</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc2">//talar om vilken som var den senaste kunden som senast var betjänad
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">betjanas</span><span class="sc10">(</span><span class="sc16">void</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc11">betjanad</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//ger senaste kunden som är betjänad
+</span><span class="sc10">}</span></div></body>
+</html>

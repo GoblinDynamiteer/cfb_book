@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/*
+Övning 9.5, Sida 201
+
+Skriv ett program som omvandlar ett svenskt datum till amerikanskt format
+
+Amerikanskt:    MM/DD/ÅÅÅÅ
+Svenskt:            ÅÅÅÅ-MM-DD
+
+Ex 
+2016-09-13 -&gt; 
+09/13/2016
+
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">[</span><span class="sc4">12</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">datum_us</span><span class="sc10">[</span><span class="sc4">12</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc6">"MM/DD/ÅÅÅÅ"</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange svenskt datum som ÅÅÅÅ-MM-DD: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%s"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//char-arrays börjar också på 0
+</span><span class="sc0">    </span><span class="sc2">//MM Månad:
+</span><span class="sc0">    </span><span class="sc11">datum_us</span><span class="sc10">[</span><span class="sc4">0</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">[</span><span class="sc4">5</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc11">datum_us</span><span class="sc10">[</span><span class="sc4">1</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">[</span><span class="sc4">6</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc2">//DD Dag:
+</span><span class="sc0">    </span><span class="sc11">datum_us</span><span class="sc10">[</span><span class="sc4">3</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">[</span><span class="sc4">8</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc11">datum_us</span><span class="sc10">[</span><span class="sc4">4</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">[</span><span class="sc4">9</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc2">//ÅÅÅÅ År:
+</span><span class="sc0">    </span><span class="sc11">datum_us</span><span class="sc10">[</span><span class="sc4">6</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">[</span><span class="sc4">0</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc11">datum_us</span><span class="sc10">[</span><span class="sc4">7</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">[</span><span class="sc4">1</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc11">datum_us</span><span class="sc10">[</span><span class="sc4">8</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">[</span><span class="sc4">2</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc11">datum_us</span><span class="sc10">[</span><span class="sc4">9</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">[</span><span class="sc4">3</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Svensk datum: %s\nAmerikanskt datum: %s"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">datum_sv</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">datum_us</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    
+    </span><span class="sc1">/*
+    12  /   45  /789
+    MM  /   DD  /ÅÅÅÅ
+    ÅÅÅÅ    -   MM  -   DD
+    1234        -   67  -   9
+    */</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0"> </span></div></body>
+</html>

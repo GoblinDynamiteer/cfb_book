@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; </span><span class="sc2">//för exit() -- avslutar programmet
+</span><span class="sc9">#include &lt;math.h&gt; </span><span class="sc2">//för max(x), min(x)
+</span><span class="sc1">/*
+Programmeringsuppgift 4.7, Sida 91
+
+In: antal domare, svårighetsgrad, poäng
+Ut: beräkna poängen för hopp
+
+Kontrollera att antalet domare är minst tre
+hopp/domarpoäng matas in tills användaren matar 
+in end of file (ctrl+z) vid någon inläsning
+
+
+Simhopptävlingar: 
+Minst 3 domare
+Poäng: 0-10
+Ta bort högsta och lägsta
+Ta medelvärde av resterande poäng
+Multiplicera medelvärdet med 3, sedan med svårighetsgradsfaktor.
+
+
+Problematik: 
+All sifferinmatning som inte har punkt istället för kommatecken avslutar programmet
+All icke-sifferinmatning (bokstäver etc) avslutar programmet
+*/</span><span class="sc0">
+
+</span><span class="sc2">//definierar avsluta till att skriva ut en rad och avsluta programmet med exit(1);
+</span><span class="sc9">#define avsluta {printf("EOF inmatat, avslutar program!");exit(1);} </span><span class="sc2">//verkar behövas vara på en rad?
+</span><span class="sc0">
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">domare</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">hopp</span><span class="sc10">=</span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//Antal domare, samt hopp # (denna används enbart i utmatad text)
+</span><span class="sc16">float</span><span class="sc0"> </span><span class="sc11">svarighet</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//svårighetsgrad för hopp (svårighetsgrad verkar ligga mellan 1.0 och 1.4 ish)
+</span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"---------------\nSimhopptävling!\n---------------\n"</span><span class="sc10">);</span><span class="sc0">
+</span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Programmet kan avbytas med EOF (Ctrl+Z) vid någon inmatning!\n\n"</span><span class="sc10">);</span><span class="sc0">
+</span><span class="sc5">while</span><span class="sc10">(</span><span class="sc11">domare</span><span class="sc10">&lt;</span><span class="sc4">3</span><span class="sc10">){</span><span class="sc0"> </span><span class="sc2">//så länge användaren matar in fel antal domare körs while-satsen, samt första gången, då domare = 0
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange antal domare: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">domare</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc2">//if-sats som triggar i fall scanf inte returnerar 1 (0=ingen variabel inläst)
+</span><span class="sc0">        </span><span class="sc11">avsluta</span><span class="sc0"> </span><span class="sc2">//definieras innan int main
+</span><span class="sc0">    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">domare</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc4">3</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc2">//triggar om användaren skriver in fel antal domare
+</span><span class="sc0">        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"För några domare!\n"</span><span class="sc10">);</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+</span><span class="sc16">float</span><span class="sc0"> </span><span class="sc11">poang</span><span class="sc10">[</span><span class="sc11">domare</span><span class="sc10">];</span><span class="sc0"> </span><span class="sc2">//array för hållande av domarpoäng, storlek till lika antal domare, egentligen har boken inte behandlat arrays än
+</span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Domarantal OK!\n"</span><span class="sc10">);</span><span class="sc0">
+</span><span class="sc5">while</span><span class="sc10">(</span><span class="sc4">1</span><span class="sc10">){</span><span class="sc0"> </span><span class="sc2">//while-sats kommer köras konstant, till användaren avslutar programmet vid en inmatning
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"\nHopp nr %d\nAnge svårighetsgrad för hopp %d: "</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">hopp</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">hopp</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">svarighet</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">)</span><span class="sc0"> 
+        </span><span class="sc11">avsluta</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"\nAnge poäng!\nSka vara 0-10\n"</span><span class="sc10">);</span><span class="sc0"> 
+    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">1</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">&lt;=</span><span class="sc11">domare</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0"> </span><span class="sc2">//for-sats som kör lika många varv som angivet antal domare
+</span><span class="sc0">        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Hopp %d - Ange poäng för domare %d: "</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">hopp</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">poang</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">])</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc2">//poäng sätts till nummer i i array
+</span><span class="sc0">            </span><span class="sc11">avsluta</span><span class="sc0">
+        </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">((</span><span class="sc11">poang</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">&gt;</span><span class="sc4">10</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">||</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">poang</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc4">0</span><span class="sc10">)){</span><span class="sc0"> </span><span class="sc2">//if-sats som triggar om användaren matar in felaktig poäng (ej 0-10)
+</span><span class="sc0">            </span><span class="sc5">while</span><span class="sc0"> </span><span class="sc10">((</span><span class="sc11">poang</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">&gt;</span><span class="sc0"> </span><span class="sc4">10</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">||</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">poang</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc4">0</span><span class="sc10">)){</span><span class="sc0"> </span><span class="sc2">//while-sats som kör så länge användaren matar in felaktig poäng
+</span><span class="sc0">                </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Fel intmatning! (poäng ska vara 0-10)\nHopp %d - Ange poäng för domare %d: "</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">hopp</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">);</span><span class="sc0">
+                </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">poang</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">])</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc2">//poäng sätts till nummer i i array
+</span><span class="sc0">                    </span><span class="sc11">avsluta</span><span class="sc0">
+            </span><span class="sc10">}</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc16">float</span><span class="sc0"> </span><span class="sc11">max</span><span class="sc0"> </span><span class="sc10">=-</span><span class="sc4">1.0</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">min</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">11.0</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//variabler som ska hålla max och min-värden från poäng-array, jag provade att inte initera dem, men då funkade inte fmax/fmin jag ville
+</span><span class="sc0">    </span><span class="sc16">float</span><span class="sc0"> </span><span class="sc11">resultat</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0.0</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//variabel för resultatet
+</span><span class="sc0">    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">1</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">&lt;=</span><span class="sc11">domare</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">max</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fmax</span><span class="sc10">(</span><span class="sc11">poang</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">],</span><span class="sc11">max</span><span class="sc10">);</span><span class="sc0">   </span><span class="sc2">//tar reda på den högsta poängen
+</span><span class="sc0">        </span><span class="sc11">min</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fmin</span><span class="sc10">(</span><span class="sc11">poang</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">],</span><span class="sc11">min</span><span class="sc10">);</span><span class="sc0">   </span><span class="sc2">//tar reda på den lägsta poängen
+</span><span class="sc0">        </span><span class="sc11">resultat</span><span class="sc0"> </span><span class="sc10">+=</span><span class="sc0"> </span><span class="sc11">poang</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">];</span><span class="sc0">           </span><span class="sc2">//adderar all poäng till variabeln resultat
+</span><span class="sc0">    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc11">resultat</span><span class="sc0"> </span><span class="sc10">-=</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">max</span><span class="sc0"> </span><span class="sc10">+</span><span class="sc0"> </span><span class="sc11">min</span><span class="sc10">);</span><span class="sc0"> </span><span class="sc2">//plockar bort de största och lägsta poängen från resultatet
+</span><span class="sc0">    </span><span class="sc11">resultat</span><span class="sc0"> </span><span class="sc10">/=</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">domare</span><span class="sc0"> </span><span class="sc10">-</span><span class="sc0"> </span><span class="sc4">2</span><span class="sc10">);</span><span class="sc0"> </span><span class="sc2">//medelvärdet av domarnas resultat (minus två domare)
+</span><span class="sc0">    </span><span class="sc11">resultat</span><span class="sc0"> </span><span class="sc10">*=</span><span class="sc0"> </span><span class="sc11">svarighet</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc4">3</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"\nResultat för hopp %d: %.2f\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">hopp</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">resultat</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">hopp</span><span class="sc10">++;</span><span class="sc0"> </span><span class="sc2">//lägger till 1 till hopp #, och kör om while-satsen
+</span><span class="sc10">}</span><span class="sc0">
+</span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

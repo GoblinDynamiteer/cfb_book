@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #0080FF;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #008000;
+}
+.sc4 {
+	color: #FF8000;
+}
+.sc5 {
+	font-weight: bold;
+	color: #00FF40;
+}
+.sc6 {
+	color: #80FFFF;
+}
+.sc9 {
+	color: #FFFF00;
+}
+.sc10 {
+	font-weight: bold;
+	color: #FF8040;
+}
+.sc11 {
+	color: #FFFFFF;
+}
+.sc16 {
+	color: #8000FF;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/*
+Skriv ett program som visar vilket betyg en elev har fått på ett matteprov. 
+Max: 50P, E:25, D:30, C:35, B:40, A:45
+
+Poäng matas in av användaren.
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">()</span><span class="sc0">
+</span><span class="sc10">{</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">poang</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//variabel för poäng
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange poäng som eleven har fått på matteprovet: "</span><span class="sc10">);</span><span class="sc0">
+    
+    </span><span class="sc2">//inmatning av poäng
+</span><span class="sc0">    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">poang</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//Skriver ut det betyg eleven har fått, om under 25 poäng är eleven underkänd
+</span><span class="sc0">    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">poang</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc4">25</span><span class="sc10">)</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Eleven har blivit underkänd på matteprovet!"</span><span class="sc10">);</span><span class="sc0">
+    
+    </span><span class="sc5">else</span><span class="sc0"> </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">poang</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc4">30</span><span class="sc10">)</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Eleven har fått betyget E på matteprovet!"</span><span class="sc10">);</span><span class="sc0">
+    
+    </span><span class="sc5">else</span><span class="sc0"> </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">poang</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc4">35</span><span class="sc10">)</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Eleven har fått betyget D på matteprovet!"</span><span class="sc10">);</span><span class="sc0">
+
+    </span><span class="sc5">else</span><span class="sc0"> </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">poang</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc4">40</span><span class="sc10">)</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Eleven har fått betyget C på matteprovet!"</span><span class="sc10">);</span><span class="sc0">
+    
+    </span><span class="sc5">else</span><span class="sc0"> </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">poang</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc4">45</span><span class="sc10">)</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Eleven har fått betyget B på matteprovet!"</span><span class="sc10">);</span><span class="sc0">
+    
+    </span><span class="sc5">else</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Eleven har fått betyget A på matteprovet!"</span><span class="sc10">);</span><span class="sc0">
+    
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

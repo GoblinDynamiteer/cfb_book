@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt; </span><span class="sc2">//för pow(x,y) och sqrt(x)
+</span><span class="sc1">/*
+Programmeringsuppgift 8.7, Sida 179
+Skapa en funktion som beräknar standardavikelsen av talen från en array.
+Värdena ska ha dataypen double.
+
+Jag använder ett annat sätt än författaren:
+https://www.wikiwand.com/sv/Standardavvikelse
+x = enstaka tal i arrayen
+m = medelvärde av talen i arrayen
+
+Summera alla (x-m)^2
+alltså:
+(a[0]-m)^2   + (a[1]-m)^2 .... osv
+
+sedan medelvärdet av denna summa (i boken är delas värdet med antal-1)
+Till sist dras kvadratroten ur summan.
+
+Tester från
+http://www.matteboken.se/lektioner/matte-2/statistik/standardavvikelse
+
+1,4,3,15,72,41,30,27,72,8,42,36,33,46,44
+Ska bli 21,9
+
+30,31,33,34,35,34,28,34,33,34,36,35,32,31,32
+ska bli 2,1
+
+OBS dessa beräknas inte med x/n-1 utan med x/n
+*/</span><span class="sc0">
+
+</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">sav</span><span class="sc10">(</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">[],</span><span class="sc0"> </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">antal</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">medelvarde</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">summa</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">&lt;</span><span class="sc11">antal</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">medelvarde</span><span class="sc0"> </span><span class="sc10">+=</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc11">medelvarde</span><span class="sc0"> </span><span class="sc10">/=</span><span class="sc0"> </span><span class="sc11">antal</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">&lt;</span><span class="sc11">antal</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">summa</span><span class="sc0"> </span><span class="sc10">+=</span><span class="sc0"> </span><span class="sc11">pow</span><span class="sc10">((</span><span class="sc11">a</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]-</span><span class="sc11">medelvarde</span><span class="sc10">),</span><span class="sc4">2</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc11">summa</span><span class="sc0"> </span><span class="sc10">/=</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">antal</span><span class="sc10">-</span><span class="sc4">1</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc11">sqrt</span><span class="sc10">(</span><span class="sc11">summa</span><span class="sc10">);</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">tal</span><span class="sc10">[]={</span><span class="sc4">1</span><span class="sc10">,</span><span class="sc4">4</span><span class="sc10">,</span><span class="sc4">3</span><span class="sc10">,</span><span class="sc4">15</span><span class="sc10">,</span><span class="sc4">72</span><span class="sc10">,</span><span class="sc4">41</span><span class="sc10">,</span><span class="sc4">30</span><span class="sc10">,</span><span class="sc4">27</span><span class="sc10">,</span><span class="sc4">72</span><span class="sc10">,</span><span class="sc4">8</span><span class="sc10">,</span><span class="sc4">42</span><span class="sc10">,</span><span class="sc4">36</span><span class="sc10">,</span><span class="sc4">33</span><span class="sc10">,</span><span class="sc4">46</span><span class="sc10">,</span><span class="sc4">44</span><span class="sc10">};</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Standardavvikelsen är: %.1f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">sav</span><span class="sc10">(</span><span class="sc11">tal</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc5">sizeof</span><span class="sc0"> </span><span class="sc11">tal</span><span class="sc10">/</span><span class="sc5">sizeof</span><span class="sc0"> </span><span class="sc11">tal</span><span class="sc10">[</span><span class="sc4">0</span><span class="sc10">]));</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

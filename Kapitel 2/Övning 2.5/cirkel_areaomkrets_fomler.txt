@@ -1,0 +1,7 @@
+A = \pi r^2\,
+eller
+
+A = \pi d^2/4\,.
+Omkretsen är
+
+O = 2 \pi r\,

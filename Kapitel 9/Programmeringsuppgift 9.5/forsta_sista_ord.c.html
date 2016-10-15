@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc7 {
+	color: #FF8409;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+</span><span class="sc1">/* Programmeringsuppgift 9.5, Sida 215
+
+Skriv in en rad, bestäm vilket det första och sista ordet är på raden
+Förutsätt att det finns minst ett blankt tecken mellen två ord i raden.
+
+Tänk på att det det första och/eller sista tecknet kan vare ett eller flera
+vita tecken. */</span><span class="sc0">
+
+</span><span class="sc2">//Funktion från Programmeringsuppgift 9.1, vänder på en textsträng
+</span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">baklanges</span><span class="sc10">(</span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">till</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">fran</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">raknare</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc11">strlen</span><span class="sc10">(</span><span class="sc11">fran</span><span class="sc10">)-</span><span class="sc4">1</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">&gt;=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">--){</span><span class="sc0">
+        </span><span class="sc11">till</span><span class="sc10">[</span><span class="sc11">raknare</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fran</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">];</span><span class="sc0">
+        </span><span class="sc11">raknare</span><span class="sc10">++;</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc11">till</span><span class="sc10">[</span><span class="sc11">raknare</span><span class="sc10">]=</span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">text</span><span class="sc10">[</span><span class="sc4">100</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">ord_forst</span><span class="sc10">[</span><span class="sc4">20</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">ord_sist</span><span class="sc10">[</span><span class="sc4">20</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">raknare</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Skriv in en textrad med minst ett mellanrum mellan två ord: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">fgets</span><span class="sc10">(</span><span class="sc11">text</span><span class="sc10">,</span><span class="sc4">100</span><span class="sc10">,</span><span class="sc11">stdin</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//ökar i med 1 så länge vittecken hittas i början av den inmatade text-strängen
+</span><span class="sc0">    </span><span class="sc5">while</span><span class="sc10">(</span><span class="sc11">isspace</span><span class="sc10">(</span><span class="sc11">text</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]))</span><span class="sc0">
+        </span><span class="sc11">i</span><span class="sc10">++;</span><span class="sc0">
+    </span><span class="sc2">//skriver det första ordet till ord_forst, till ett vittecken hittas
+</span><span class="sc0">    </span><span class="sc5">while</span><span class="sc10">(!</span><span class="sc11">isspace</span><span class="sc10">(</span><span class="sc11">text</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">])){</span><span class="sc0">
+        </span><span class="sc11">ord_forst</span><span class="sc10">[</span><span class="sc11">raknare</span><span class="sc10">++]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">text</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">++];</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc1">/*
+    i sätts till textens stränglängd 
+    -1 för att sista tecknet är nolltecken
+    -1 för att strängen börjar med index 0
+    */</span><span class="sc0">
+    </span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">strlen</span><span class="sc10">(</span><span class="sc11">text</span><span class="sc10">)-</span><span class="sc4">2</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//nolltecken sätts efter slutet av ordet i variabeln som håller det första ordet
+</span><span class="sc0">    </span><span class="sc11">ord_forst</span><span class="sc10">[</span><span class="sc11">raknare</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">raknare</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//minskar i med 1 så länge vittecken hittas i slutet av den inmatade text-strängen
+</span><span class="sc0">    </span><span class="sc5">while</span><span class="sc10">(</span><span class="sc11">isspace</span><span class="sc10">(</span><span class="sc11">text</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]))</span><span class="sc0">
+        </span><span class="sc11">i</span><span class="sc10">--;</span><span class="sc0">
+    </span><span class="sc2">//skriver det sista ordet till ord_sist, till ett vittecken hittas, texten blir dock baklänges
+</span><span class="sc0">    </span><span class="sc5">while</span><span class="sc10">(!</span><span class="sc11">isspace</span><span class="sc10">(</span><span class="sc11">text</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">])){</span><span class="sc0">
+        </span><span class="sc11">ord_sist</span><span class="sc10">[</span><span class="sc11">raknare</span><span class="sc10">++]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">text</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">--];</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc2">//nolltecken sätts efter slutet av ordet i variabeln som håller det sista ordet
+</span><span class="sc0">    </span><span class="sc11">ord_sist</span><span class="sc10">[</span><span class="sc11">raknare</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//variabel för att hålla sista ordet omvändt, behövs för funktionen baklanges
+</span><span class="sc0">    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">ord_sist_bak</span><span class="sc10">[</span><span class="sc4">20</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc6">""</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//baklanges anropas för att vända på textsträngen i ord_sist
+</span><span class="sc0">    </span><span class="sc11">baklanges</span><span class="sc10">(</span><span class="sc11">ord_sist_bak</span><span class="sc10">,</span><span class="sc11">ord_sist</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Första ordet: %s, andra ordet: %s"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">ord_forst</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">ord_sist_bak</span><span class="sc10">);</span><span class="sc0">
+</span><span class="sc1">/*  for(int i = strlen(ord_sist)-1;i&gt;=0;i--)
+        printf("%c", ord_sist[i]); */</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

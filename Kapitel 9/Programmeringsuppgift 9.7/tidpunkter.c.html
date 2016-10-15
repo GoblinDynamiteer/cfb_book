@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc7 {
+	color: #FF8409;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/* Programmeringsuppgift 9.7, Sida 215
+
+Skriv ett program som läser in två tidpunkter med formen tt.mm
+Programmet ska visa hur många minuter det är mellan de två
+tidpunkterna.
+
+Tips: Räkna om de båda tiderna till antal minuter som gått sedan
+det aktuella dygnets start, och gör en justering om den senare tidpunkten
+infaller under det följande dygnet. */</span><span class="sc0">
+
+</span><span class="sc2">//En eventuell "raggarlösning" med onödigt många variabler för hållare och konvertering
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">tid1</span><span class="sc10">[</span><span class="sc4">7</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc6">"09:35"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tid2</span><span class="sc10">[</span><span class="sc4">7</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc6">"01:30"</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">h1</span><span class="sc10">[</span><span class="sc4">3</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">h2</span><span class="sc10">[</span><span class="sc4">3</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">m1</span><span class="sc10">[</span><span class="sc4">3</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">m2</span><span class="sc10">[</span><span class="sc4">3</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">timme1</span><span class="sc10">,</span><span class="sc11">minut1</span><span class="sc10">,</span><span class="sc11">timme2</span><span class="sc10">,</span><span class="sc11">minut2</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">totaltminuter1</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">totaltminuter2</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange tidpunkt 1 (hh:mm): "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//fgets(tid1, 7, stdin);
+</span><span class="sc0">    </span><span class="sc1">/*
+    Jag får inte fgets att fungera när två variabler ska sätta, scanf fungerar så länge man inte ska slå in mellanslag
+    */</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%s"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tid1</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange tidpunkt 2 (hh:mm): "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//fgets(tid2, 7, stdin);
+</span><span class="sc0">    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%s"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tid2</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">j</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//(xx:yy) - xx/yy i tid1 och tid2 sätts till h1=xx h2=xx m1=yy m2=yy
+</span><span class="sc0">    </span><span class="sc5">for</span><span class="sc10">(;</span><span class="sc11">i</span><span class="sc10">&lt;</span><span class="sc4">2</span><span class="sc10">;){</span><span class="sc0">
+        </span><span class="sc11">h1</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc11">tid1</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">];</span><span class="sc0">
+        </span><span class="sc11">h2</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc11">tid2</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">];</span><span class="sc0">
+        </span><span class="sc11">m1</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc11">tid1</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">+</span><span class="sc4">3</span><span class="sc10">];</span><span class="sc0">
+        </span><span class="sc11">m2</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc11">tid2</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">+</span><span class="sc4">3</span><span class="sc10">];</span><span class="sc0">
+        </span><span class="sc11">i</span><span class="sc10">++;</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc2">//nolltecken sätts i slutet av strängarna för h1,h2,m1,m2
+</span><span class="sc0">    </span><span class="sc11">h1</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">h2</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">m1</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">m2</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc1">/*strängarna h1,h2,m1,m2 läses in som %d till int-variablerna timme1, timme2, minut1, minut2
+    sscanf fungerar som scanf, fast får input från sträng istället för användare, första argumentet är
+    textsträngen sscanf(sträng, "formattering", &amp;tillvariabel);
+    */</span><span class="sc0">
+    </span><span class="sc11">sscanf</span><span class="sc10">(</span><span class="sc11">h1</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">timme1</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">sscanf</span><span class="sc10">(</span><span class="sc11">h2</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">timme2</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">sscanf</span><span class="sc10">(</span><span class="sc11">m1</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">minut1</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">sscanf</span><span class="sc10">(</span><span class="sc11">m2</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">minut2</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//Beräknar minuter från 0 (dagens start)
+</span><span class="sc0">    </span><span class="sc11">totaltminuter1</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">timme1</span><span class="sc10">*</span><span class="sc4">60</span><span class="sc0"> </span><span class="sc10">+</span><span class="sc0"> </span><span class="sc11">minut1</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">totaltminuter2</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">timme2</span><span class="sc10">*</span><span class="sc4">60</span><span class="sc0"> </span><span class="sc10">+</span><span class="sc0"> </span><span class="sc11">minut2</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc1">/*
+    om antal minuter från 0 är större för den andra inmatade tidpunkten, innebär det att det ligger i dagen efter 
+    i så fall adderas en heldags minuter till summan 1 dygn = (24 * 60m) minuter
+    */</span><span class="sc0">
+    </span><span class="sc5">if</span><span class="sc10">(</span><span class="sc11">totaltminuter2</span><span class="sc10">&lt;=</span><span class="sc11">totaltminuter1</span><span class="sc10">){</span><span class="sc0">
+        </span><span class="sc11">totaltminuter2</span><span class="sc0"> </span><span class="sc10">+=</span><span class="sc0"> </span><span class="sc4">24</span><span class="sc10">*</span><span class="sc4">60</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Det är %d minuter mellan klockslagen [%s] och [%s]"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">totaltminuter2</span><span class="sc10">-</span><span class="sc11">totaltminuter1</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tid1</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">tid2</span><span class="sc10">);</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc1">/* Författarens lösning, lite snyggare...
+int main() {
+   int t1, t2, m1, m2; //blir rätt många variabler här också, +n1 och n2 som deklareras nedan. Han använder inte char alls dock
+   char punkt;
+   printf("Starttid (tt.mm)? ");
+   scanf("%d%c%d", &amp;t1, &amp;punkt, &amp;m1); //&lt;--- går tydligen göra så, funkar för att en int kan hålla ett enstaka tecken, spelar ingen roll vad man slår in mellan siffrorna, så länge det är ett enda tecken
+   printf("Sluttid  (tt.mm)? ");
+   scanf("%d%c%d", &amp;t2, &amp;punkt, &amp;m2);
+   int n1 = t1 * 60 + m1;    
+   int n2 = t2 * 60 + m2; 
+   if (n2 &lt; n1)
+     n2 = n2 + 60*24;      
+   printf("Tidsintervall: %d minuter\n", n2-n1);
+ } */</span></div></body>
+</html>

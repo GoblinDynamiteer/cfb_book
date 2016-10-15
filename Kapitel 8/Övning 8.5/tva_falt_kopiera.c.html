@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/*
+Övning 8.5, Sid 160
+
+Skapa två int fält a &amp; b:
+
+a[100] = 0,1,2,3 ... osv
+b[20] = alla element 0
+
+Kopiera fält med index 50-54 från a till 10-14 i b
+Kopiera fält med index 95-99 från a till 5-9 i b
+
+Använd for-satser för att initiera och kopiera element!
+
+Använd till sist en forsats för att skriva ut hela fältet b
+
+*/</span><span class="sc0">
+
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">[</span><span class="sc4">100</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">b</span><span class="sc10">[</span><span class="sc4">20</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc1">/*
+    sizeof x/sizeof x[0] ger antalet element i fält x
+    forsatserna körs så länge i är mindre än fältens
+    antal element. Notera att fältens elementindex 
+    börjar på noll så fältet a är a[0] - a[99]
+    Därför sätter jag körvillkoren till i&lt;x istället
+    för i&lt;=x.
+    */</span><span class="sc0">
+    </span><span class="sc5">for</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">&lt;</span><span class="sc5">sizeof</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">/</span><span class="sc5">sizeof</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">[</span><span class="sc4">0</span><span class="sc10">];</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">a</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">for</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">&lt;</span><span class="sc5">sizeof</span><span class="sc0"> </span><span class="sc11">b</span><span class="sc10">/</span><span class="sc5">sizeof</span><span class="sc0"> </span><span class="sc11">b</span><span class="sc10">[</span><span class="sc4">0</span><span class="sc10">];</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">b</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc1">/*
+    Dessa for-satser går fixa på många olika
+    sätt. Jag tycker denna lösning är ganska
+    enkel att förstå. När i börjar på 0 blir första
+    varvet 
+    b[i+10] = a[i+50] == b[0+10] = a[0+50] 
+    osv.
+    */</span><span class="sc0">
+    </span><span class="sc5">for</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">+</span><span class="sc4">50</span><span class="sc10">&lt;=</span><span class="sc4">54</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">b</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">+</span><span class="sc4">10</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">+</span><span class="sc4">50</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">for</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">+</span><span class="sc4">95</span><span class="sc10">&lt;=</span><span class="sc4">99</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">b</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">+</span><span class="sc4">5</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">a</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">+</span><span class="sc4">95</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Element i fältet b:\n"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//Likadan for-sats som användes för att sätta elementen i b
+</span><span class="sc0">    </span><span class="sc5">for</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">&lt;</span><span class="sc5">sizeof</span><span class="sc0"> </span><span class="sc11">b</span><span class="sc10">/</span><span class="sc5">sizeof</span><span class="sc0"> </span><span class="sc11">b</span><span class="sc10">[</span><span class="sc4">0</span><span class="sc10">];</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"b[%d]: %d \n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">b</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]);</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

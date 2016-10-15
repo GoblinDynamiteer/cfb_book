@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt; </span><span class="sc2">//för M_E, pow(x,y), och log(x)
+</span><span class="sc0">
+</span><span class="sc1">/*
+Programmeringsuppgift 6.10, Sida 122
+
+Konstruera en funktion upphoj som beräknar
+x^y, där både x och y är reella tal
+
+Använd 
+x^y  = e^(y*ln(x))
+
+
+*/</span><span class="sc0">
+
+</span><span class="sc2">//funktion som beräkna x^y
+</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">xy</span><span class="sc10">(</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">x</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">y</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc11">pow</span><span class="sc10">(</span><span class="sc11">M_E</span><span class="sc10">,(</span><span class="sc11">y</span><span class="sc10">*</span><span class="sc11">log</span><span class="sc10">(</span><span class="sc11">x</span><span class="sc10">)));</span><span class="sc0"> </span><span class="sc2">//e^(y*ln(x))
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">x</span><span class="sc10">,</span><span class="sc11">y</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange x:"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%lf"</span><span class="sc10">,&amp;</span><span class="sc11">x</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange y:"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%lf"</span><span class="sc10">,&amp;</span><span class="sc11">y</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Resultat: %.2lf^%.2lf \t= %.2lf"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">x</span><span class="sc10">,</span><span class="sc11">y</span><span class="sc10">,</span><span class="sc11">xy</span><span class="sc10">(</span><span class="sc11">x</span><span class="sc10">,</span><span class="sc11">y</span><span class="sc10">));</span><span class="sc0">
+    </span><span class="sc2">//Använder pow(x,y) från math.h för att se om resultatet från funktionen stämmer:
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"\nTest - pow(%.2lf,%.2lf) \t= %.2lf: "</span><span class="sc10">,</span><span class="sc11">x</span><span class="sc10">,</span><span class="sc11">y</span><span class="sc10">,</span><span class="sc11">pow</span><span class="sc10">(</span><span class="sc11">x</span><span class="sc10">,</span><span class="sc11">y</span><span class="sc10">));</span><span class="sc0"> 
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

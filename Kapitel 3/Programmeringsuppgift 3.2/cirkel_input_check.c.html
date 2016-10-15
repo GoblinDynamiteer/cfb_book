@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #0080FF;
+}
+.sc0 {
+}
+.sc1 {
+	color: #008000;
+}
+.sc2 {
+	color: #008000;
+}
+.sc4 {
+	color: #FF8000;
+}
+.sc5 {
+	font-weight: bold;
+	color: #00FF40;
+}
+.sc6 {
+	color: #80FFFF;
+}
+.sc9 {
+	color: #FFFF00;
+}
+.sc10 {
+	font-weight: bold;
+	color: #FF8040;
+}
+.sc11 {
+	color: #FFFFFF;
+}
+.sc16 {
+	color: #8000FF;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+</span><span class="sc0">
+</span><span class="sc2">//#define PI 3.14159265359 //sätter "PI" som en konstant - Ändring, M_PI finns in math.h
+</span><span class="sc0">
+</span><span class="sc1">/*
+Programmeringsuppgift 3.2, sida 72
+Skriv om programmet i övning 2.6, om det inmatade värdet för cirkelns radie
+inte är större än 0 ska programmet visa en felutskrift.
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">()</span><span class="sc0">
+</span><span class="sc10">{</span><span class="sc0">
+    </span><span class="sc16">float</span><span class="sc0"> </span><span class="sc11">radie</span><span class="sc10">;</span><span class="sc0"> 
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange radien för en cirkel: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">radie</span><span class="sc10">);</span><span class="sc0"> </span><span class="sc2">//input för användare: radien kan innehålla decimaler
+</span><span class="sc0">    </span><span class="sc2">//test för om inmatad radie är mindre eller lika med noll, om så är fallet fortsätter ej programmet, annars beräknas area och cirkel
+</span><span class="sc0">    </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">radie</span><span class="sc0"> </span><span class="sc10">&lt;=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">){</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Radien är under eller lika med 0! Avbryter"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">else</span><span class="sc0"> </span><span class="sc10">{</span><span class="sc0">
+        </span><span class="sc2">//printf kan skriva ut värdet från flera variabler / beräkningar i samma anrop
+</span><span class="sc0">        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Omkretsen för en cirkel med radien %.3f är %.3f \n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">radie</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc4">2</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">radie</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">M_PI</span><span class="sc10">);</span><span class="sc0"> </span><span class="sc2">//Omkretsen för en cirkel beräknas med 2PIr
+</span><span class="sc0">        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Arean för en cirkel med radien %.3f är %.3f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">radie</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">radie</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">radie</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc0"> </span><span class="sc11">M_PI</span><span class="sc10">);</span><span class="sc0"> </span><span class="sc2">//Arean för en cirkel beräknas med PIr^2
+</span><span class="sc0">    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

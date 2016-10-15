@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Consolas';
+	font-size: 10pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/*
+Programmeringsuppgift 4.3, Sida 90
+
+På en mycket farlig arbetsplats: 
+Din lön börjar på 1 öre, lönen dubbleras 
+varje dag som du arbetar kvar.
+
+Hur länge måste du arbeta innan du tjänat ihop 10 miljoner kronor?
+
+10 000 000 kr = 10 000 000 * 100 öre = 1000000000
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc0"> </span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">long</span><span class="sc0"> </span><span class="sc11">lon</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">dagar</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">1</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">//Jag kan ev. ha tänkt fel, kanske ska dagar börja på 0
+</span><span class="sc0">    </span><span class="sc5">while</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc4">1</span><span class="sc10">){</span><span class="sc0">
+        </span><span class="sc11">dagar</span><span class="sc10">++;</span><span class="sc0">
+        </span><span class="sc11">lon</span><span class="sc0"> </span><span class="sc10">*=</span><span class="sc0"> </span><span class="sc4">2</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc2">// lon *= 2 betyder lon = lon * 2, sida 87 i boken
+</span><span class="sc0">        </span><span class="sc5">if</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">lon</span><span class="sc0"> </span><span class="sc10">&gt;=</span><span class="sc0"> </span><span class="sc4">1000000000</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc2">//om lönen blir lika med eller över 1000000000 öre så bryts while-satsen med break.
+</span><span class="sc0">            </span><span class="sc5">break</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc10">};</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Det tar %d dagar att tjäna ihop 10 miljoner kronor på arbetsplatsen"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">dagar</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

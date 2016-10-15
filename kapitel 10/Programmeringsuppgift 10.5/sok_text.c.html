@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #293134; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;math.h&gt;
+#include "strings_text_v1.h" </span><span class="sc2">//eget funktionsbibliotek
+</span><span class="sc9">#define N 300
+</span><span class="sc0">
+</span><span class="sc1">/* Programmeringsuppgift 10.5, Sida 237
+
+Skriv ett program som läser in en befintlig textfil och 
+söker efter de rader i filen som innehåller en viss text.
+De funna raderna ska kopieras till en ny fil.
+
+Filnamnen ska läsas in från kommandofönstret. 
+
+filer:
+werther.txt
+kafka.txt
+
+exempel-ord: soul           (5 rader kafka)
+exempel-ord: sanctuary  (2 rader werther)
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">infil_namn</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">utfil_namn</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">sok</span><span class="sc10">[</span><span class="sc11">N</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">rader_kopierade</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange infilens namn: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">radInput</span><span class="sc10">(</span><span class="sc11">infil_namn</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange utfilens namn: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">radInput</span><span class="sc10">(</span><span class="sc11">utfil_namn</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Söktext: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">radInput</span><span class="sc10">(</span><span class="sc11">sok</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc16">FILE</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">infil</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fopen</span><span class="sc10">(</span><span class="sc11">infil_namn</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"r"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc16">FILE</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">utfil</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">fopen</span><span class="sc10">(</span><span class="sc11">utfil_namn</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc6">"w"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//Egen funktion, skriver från textfil till variabel s, returnerar 0 när klar
+</span><span class="sc0">    </span><span class="sc5">while</span><span class="sc10">(</span><span class="sc11">textfilTillString</span><span class="sc10">(</span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">N</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">infil</span><span class="sc10">)){</span><span class="sc0">
+        </span><span class="sc2">//printf("%s\n", s);
+</span><span class="sc0">        </span><span class="sc5">if</span><span class="sc10">(</span><span class="sc11">strstr</span><span class="sc10">(</span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">sok</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc5">NULL</span><span class="sc10">){</span><span class="sc0">
+            </span><span class="sc11">fprintf</span><span class="sc10">(</span><span class="sc11">utfil</span><span class="sc10">,</span><span class="sc6">"%s\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">);</span><span class="sc0">
+            </span><span class="sc11">rader_kopierade</span><span class="sc10">++;</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ordet %s hittades i %d rader - kopierade till %s"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">sok</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">rader_kopierade</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">utfil</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">fclose</span><span class="sc10">(</span><span class="sc11">infil</span><span class="sc10">);</span><span class="sc0"> 
+    </span><span class="sc11">fclose</span><span class="sc10">(</span><span class="sc11">utfil</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

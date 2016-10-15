@@ -1,0 +1,4 @@
+kallep 25 40 15
+hannak 30 45 15 33 14
+svenneb 14 23 58 74 10
+hakans 12 12 12 13 12

@@ -1,0 +1,1 @@
+gcc strings_text_v1.c temperaturer.c -o temperaturer.exe

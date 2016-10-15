@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/*
+Programmeringsuppgift 4.4, Sida 90
+
+Skriv ett program som skriver ut en multiplikationstabell enligt: 
+1
+2       4
+3       6       9
+4       8       12  16
+5       10  15  20  25
+
+Antal rader matas in av användaren.
+Tips: Mata in ett tal över 10000 för en fräsig siffershow
+
+*/</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">rader</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Ange antal rader: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">scanf</span><span class="sc10">(</span><span class="sc6">"%d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">rader</span><span class="sc10">);</span><span class="sc0">                 </span><span class="sc2">//användarinmatning av antal rader som ska visas
+</span><span class="sc0">    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">1</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">&lt;=</span><span class="sc11">rader</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">      </span><span class="sc2">//så länge i är mindre eller lika med antal inmatade rader så körs for-loopen
+</span><span class="sc0">        </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">=</span><span class="sc4">1</span><span class="sc10">;</span><span class="sc11">s</span><span class="sc10">&lt;=</span><span class="sc11">i</span><span class="sc10">;</span><span class="sc11">s</span><span class="sc10">++)</span><span class="sc0">       </span><span class="sc2">//så länge s är mindre eller lika med i så körs for-loopen (Loopen kommer köra lika många gånger som i är stort)
+</span><span class="sc0">            </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"%d\t"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">*</span><span class="sc11">s</span><span class="sc10">);</span><span class="sc0">            </span><span class="sc2">//printf matar ut i*s som är multiplikationstabellen för siffra i, s antal gånger
+</span><span class="sc0">        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"\n"</span><span class="sc10">);</span><span class="sc0">                           </span><span class="sc2">//ny rad görs i första for-satsen efter att den nästlade for-satsen körts klar.
+</span><span class="sc0">    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc7 {
+	color: #FF8409;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/* Programmeringsuppgift 9.3, Sida 215.
+
+Skriv ett prgoram som läser en text och omvandlar den från 'p-språket'
+till vanlig text.
+I p-språket dubbleras alla vokaler, och tecknet 'p' placeras mellan
+dem.
+
+Ex: 
+"Apallapa kapan C"  --&gt; "Alla kan C"
+JopoHapaN äpar BäpasT! */</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc2">//Variabler för input av text i p-språket, konverterad text, och en variabel som innehåller svenska vokaler
+</span><span class="sc0">    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">p_kodad_text</span><span class="sc10">[</span><span class="sc4">100</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">avkodad_text</span><span class="sc10">[</span><span class="sc4">100</span><span class="sc10">],</span><span class="sc0"> </span><span class="sc11">vokaler</span><span class="sc10">[</span><span class="sc4">25</span><span class="sc10">]=</span><span class="sc6">"AaEeIiOoUuYyÅåÄäÖö"</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Skriv en text i p-språket för att avkoda den!: "</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//printf skriver avbryter inläsning vid ett vitt tecken, använd fgets för korrekt inmatning av text
+</span><span class="sc0">    </span><span class="sc11">fgets</span><span class="sc10">(</span><span class="sc11">p_kodad_text</span><span class="sc10">,</span><span class="sc4">100</span><span class="sc10">,</span><span class="sc11">stdin</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//Index för char arrayen som konverterad text ska skrivas till 
+</span><span class="sc0">    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">raknare</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//for-sats kör så länge ett nolltecken inte hittas i strängen med p-språket text
+</span><span class="sc0">    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc11">p_kodad_text</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]!=</span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc1">/* tecken skrivs från kodad sträng till avkodad sträng, 
+        om en vokal hittas i den kodade strängen ökar i med 2, 
+        för att hoppa över två tecken.*/</span><span class="sc0">
+        </span><span class="sc11">avkodad_text</span><span class="sc10">[</span><span class="sc11">raknare</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">p_kodad_text</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">];</span><span class="sc0">
+        </span><span class="sc2">//strchr används för att söka om ett tecken finns i en sträng, den returnerar NULL om den inte hittas
+</span><span class="sc0">        </span><span class="sc5">if</span><span class="sc10">(</span><span class="sc11">strchr</span><span class="sc10">(</span><span class="sc11">vokaler</span><span class="sc10">,</span><span class="sc11">p_kodad_text</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">])</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc5">NULL</span><span class="sc10">){</span><span class="sc0">
+            </span><span class="sc11">i</span><span class="sc10">+=</span><span class="sc4">2</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+        </span><span class="sc11">raknare</span><span class="sc10">++;</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc2">//sist sätts ett nolltecken i strängen avkodad_text, och den skrivs ut
+</span><span class="sc0">    </span><span class="sc11">avkodad_text</span><span class="sc10">[</span><span class="sc11">raknare</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Avkodad text: %s"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">avkodad_text</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span></div></body>
+</html>

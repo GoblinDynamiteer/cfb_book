@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt; </span><span class="sc2">//för pow(x,y)
+</span><span class="sc0">
+</span><span class="sc1">/* Programmeringsuppgift 11.7, Sida 277
+
+Skriv en funktion som beräknar standardavvikelse (tecken sigma) och 
+medelvärde för en array med element av typen double.
+
+Parametrar till funktionen är arrayen, antal element (och adresser medelvärde och sigma)
+
+Räkna:
+Medelvärde är summan av elementen dividerat med antal element.
+
+sigma: 
+    Räkna först SUMMAN av varje element I KVADRAT (upphöjt med 2)
+    summa_kvadrat = summa_kvadrat + element * element;
+    
+    Beräkna MEDELVÄRDET av SUMMAN AV ALLA TAL I KVADRAT
+    summa = summa + element;
+    medelvärde(för sigma) = element * element / (antal element)
+    
+    y = summa_kvadrat - medelvärde(för sigma) / (antal element - 1)
+    sigma = roten ur y
+
+exempel
+array:
+13.4,15.2,14.21,8.2,10.2,17.5,14.2,13.2,13.9,15.2,11.9,7.3,6.9
+
+mv:
+12.41
+
+sigma:
+3.31 */</span><span class="sc0">
+
+</span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">sigma_mv</span><span class="sc10">(</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">array</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">antal_element</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">medelvarde</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">sigma</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">summa_kvadrat</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0.0</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">summa</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0.0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">double</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">tal</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">array</span><span class="sc10">;</span><span class="sc11">tal</span><span class="sc10">&lt;</span><span class="sc11">array</span><span class="sc10">+</span><span class="sc11">antal_element</span><span class="sc10">;</span><span class="sc11">tal</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">summa_kvadrat</span><span class="sc0"> </span><span class="sc10">+=</span><span class="sc0"> </span><span class="sc11">pow</span><span class="sc10">(*</span><span class="sc11">tal</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc4">2</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc11">summa</span><span class="sc0"> </span><span class="sc10">+=</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">tal</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc2">//printf("+");
+</span><span class="sc0">    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc2">//Beräkningar enligt ovan:
+</span><span class="sc0">    </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">medelvarde_kvad</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">pow</span><span class="sc10">(</span><span class="sc11">summa</span><span class="sc10">,</span><span class="sc4">2</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">/</span><span class="sc0"> </span><span class="sc11">antal_element</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//printf("Funktion: medelvarde_kvad: %lf\n", medelvarde_kvad);
+</span><span class="sc0">    </span><span class="sc2">//printf("Funktion: summa_kvadrat: %lf\n", summa_kvadrat);
+</span><span class="sc0">    </span><span class="sc10">*</span><span class="sc11">sigma</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">sqrt</span><span class="sc10">((</span><span class="sc11">summa_kvadrat</span><span class="sc0"> </span><span class="sc10">-</span><span class="sc0"> </span><span class="sc11">medelvarde_kvad</span><span class="sc10">)</span><span class="sc0"> </span><span class="sc10">/</span><span class="sc0"> </span><span class="sc10">(</span><span class="sc11">antal_element</span><span class="sc10">-</span><span class="sc4">1</span><span class="sc10">));</span><span class="sc0"> </span><span class="sc2">//OBS paranteser!
+</span><span class="sc0">    </span><span class="sc10">*</span><span class="sc11">medelvarde</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">summa</span><span class="sc10">/</span><span class="sc11">antal_element</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//printf("Funktion: summa_kvadrat: %lf\n", summa_kvadrat);
+</span><span class="sc0">    </span><span class="sc2">//printf("Funktion: summa: %lf\n", summa);
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">double</span><span class="sc0"> </span><span class="sc11">array_test</span><span class="sc10">[]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc10">{</span><span class="sc4">13.4</span><span class="sc10">,</span><span class="sc4">15.2</span><span class="sc10">,</span><span class="sc4">14.21</span><span class="sc10">,</span><span class="sc4">8.2</span><span class="sc10">,</span><span class="sc4">10.2</span><span class="sc10">,</span><span class="sc4">17.5</span><span class="sc10">,</span><span class="sc4">14.2</span><span class="sc10">,</span><span class="sc4">13.2</span><span class="sc10">,</span><span class="sc4">13.9</span><span class="sc10">,</span><span class="sc4">15.2</span><span class="sc10">,</span><span class="sc4">11.9</span><span class="sc10">,</span><span class="sc4">7.3</span><span class="sc10">,</span><span class="sc4">6.9</span><span class="sc10">},</span><span class="sc0"> </span><span class="sc11">mv</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">sigma</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">n</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc5">sizeof</span><span class="sc0"> </span><span class="sc11">array_test</span><span class="sc0"> </span><span class="sc10">/</span><span class="sc0"> </span><span class="sc5">sizeof</span><span class="sc10">(</span><span class="sc16">double</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//printf("Antal element: %d", n);
+</span><span class="sc0">    </span><span class="sc1">/*  &amp; framför variabeln betyder att man skickar addressen till funktionen, i stället för värdet 
+    funktionen har som parametrar pekare för medelvärde och sigma
+    Detta innebär att funktionen kommer kundda sätta/ändra värdena i mv och sigma
+    utan att ha dem deklarerade så att de är synliga för funktionen */</span><span class="sc0">
+    </span><span class="sc11">sigma_mv</span><span class="sc10">(</span><span class="sc11">array_test</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">n</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">mv</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc10">&amp;</span><span class="sc11">sigma</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Medelvärde: %.2f, standardavvikelse: %.2f"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">mv</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">sigma</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

@@ -1,0 +1,5 @@
+Linda Olsson 12 20 15 5
+Daniel Lindman 10 28 20
+Linda Karlsson 23 11 55
+Richard Larsson 12 55 44 22
+Linda Johansson 12 66 99 22

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Courier New';
+	font-size: 10pt;
+	color: #000000;
+}
+.sc0 {
+}
+.sc2 {
+	color: #008000;
+}
+.sc4 {
+	color: #FF8000;
+}
+.sc5 {
+	font-weight: bold;
+	color: #00FF40;
+}
+.sc6 {
+	color: #80FFFF;
+}
+.sc9 {
+	color: #FFFF00;
+}
+.sc10 {
+	font-weight: bold;
+	color: #FF8040;
+}
+.sc11 {
+	color: #FFFFFF;
+}
+.sc16 {
+	color: #8000FF;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;limits.h&gt; </span><span class="sc2">//innehåller information om max/minvärden för datatyper
+</span><span class="sc9">#include &lt;float.h&gt; </span><span class="sc2">//innehåller information om decimalsäkerhet för datatyper
+</span><span class="sc9">#include &lt;stdio.h&gt;
+</span><span class="sc0">
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">()</span><span class="sc0">
+</span><span class="sc10">{</span><span class="sc0">
+    </span><span class="sc2">//INT_MAX är en konstant från limits.h som innehåller det största värdet som kan lagras i en var av typen int
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Det största värdet som kan lagras i en variabel av datatypen int: %d \n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">INT_MAX</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//INT_MIN är en konstant från limits.h som innehåller det minsta värdet som kan lagras i en var av typen int
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Det minsta värdet som kan lagras i en variabel av datatypen int: %d \n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">INT_MIN</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//FLT_DIG är en konstant från float.h som innehåller decimalsäkerhet för var av typen float
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Decimalnoggranhet för en variabel av datatypen float: %d \n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">FLT_DIG</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//DBL_DIG är en konstant från float.h som innehåller decimalsäkerhet för var av typen double
+</span><span class="sc0">    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Decimalnoggranhet för en variabel av datatypen double: %d"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">DBL_DIG</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc5">return</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc7 {
+	color: #FF8409;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/* Programmeringsuppgift 11.8, Sida 277
+Skriv en funktion som delar upp en textsträng
+i så kallade tokens. Varje token avgränsas av ett mellanslag
+Först och sista token behöver inte ha initialt mellanslag eller efterliggande mellanslag (eller vittecken?)
+
+Ex: Jag Heter Kalle 
+ska delas upp i:
+Jag
+Heter
+Kalle
+
+Funktionen: 
+void split(char *s, char *tab[], int max)
+
+s är en pekare till den text som ska delas upp, ska avslutas med nolltecken \0
+tab är en pekare till ett oiniterat fält, antal element i fältet ska vara max
+
+funktionen ska fylla elementen i fältet tab så att de pekar på de token som finns i s
+
+Om fältet tab innehåller färre element (variabel max) än antal token, så ska enbart dessa
+första element fyllas. Å andra hållet, om det finns färre tokens än element i tab, så ska de
+övriga elementen fyllas med tomma pekare.
+
+Funktionen split ska lägga nolltecken efter varje token. */</span><span class="sc0">
+
+
+</span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">split</span><span class="sc10">(</span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">tab</span><span class="sc10">[],</span><span class="sc0"> </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">max</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">sl</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">strlen</span><span class="sc10">(</span><span class="sc11">s</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//Sätter nollpekare till elementen i tab
+</span><span class="sc0">    </span><span class="sc5">while</span><span class="sc10">(</span><span class="sc11">i</span><span class="sc10">&lt;</span><span class="sc11">max</span><span class="sc10">){</span><span class="sc0">
+        </span><span class="sc11">tab</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">++]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc1">/* Loopen kör så länge *pekare inte är större än s+sl-1 (börjar på 0), i för pekarindex i tab sätts till 0 
+    Det hade gått att använda pekaren 's' direkt, utan att deklarera en ny pekare */</span><span class="sc0">
+    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">pekare</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc11">pekare</span><span class="sc0"> </span><span class="sc10">&lt;</span><span class="sc0"> </span><span class="sc11">s</span><span class="sc10">+</span><span class="sc11">sl</span><span class="sc10">-</span><span class="sc4">1</span><span class="sc10">;</span><span class="sc11">pekare</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc2">//Pekare ökar medans mellanslag hittas, och det pekaren pekar på inte är nolltecken
+</span><span class="sc0">        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Pekaradress i början av loopen:\t\t %p\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">pekare</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc5">while</span><span class="sc10">(*</span><span class="sc11">pekare</span><span class="sc0"> </span><span class="sc10">&amp;&amp;</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">pekare</span><span class="sc0"> </span><span class="sc10">==</span><span class="sc0"> </span><span class="sc7">' '</span><span class="sc10">){</span><span class="sc0">
+            </span><span class="sc11">pekare</span><span class="sc10">++;</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+        </span><span class="sc1">/*  Om det pekaren pekar på är nolltecken avslutas funktionen (void avslutas med return; ) 
+        Denna triggar inte efter att nolltecken sätts i slutet av for-loopen, för pekaren ökar med 1
+        i loopens argument.  */</span><span class="sc0">
+        </span><span class="sc5">if</span><span class="sc10">(*</span><span class="sc11">pekare</span><span class="sc0"> </span><span class="sc10">==</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">){</span><span class="sc0">
+            </span><span class="sc5">return</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+        </span><span class="sc2">//Elementet i, som är en pekare i tab, sätts till det pekaren pekar på, i ökar sedan med 1
+</span><span class="sc0">        </span><span class="sc11">tab</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">++]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">pekare</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc2">//Pekaren ökar medans inga mellanslag hittas, 
+</span><span class="sc0">        </span><span class="sc5">while</span><span class="sc10">(*</span><span class="sc11">pekare</span><span class="sc0"> </span><span class="sc10">&amp;&amp;</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">pekare</span><span class="sc0"> </span><span class="sc10">!=</span><span class="sc0"> </span><span class="sc7">' '</span><span class="sc10">){</span><span class="sc0">
+            </span><span class="sc11">pekare</span><span class="sc10">++;</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+        </span><span class="sc2">//Det pekaren pekar på sätts till nolltecken
+</span><span class="sc0">        </span><span class="sc10">*</span><span class="sc11">pekare</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"Pekaradress efter nolltecken satt:\t %p\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">pekare</span><span class="sc10">);</span><span class="sc0">
+        </span><span class="sc2">//Om i är större än max element för tab så avslutas funktionen
+</span><span class="sc0">        </span><span class="sc5">if</span><span class="sc10">(</span><span class="sc11">i</span><span class="sc10">&gt;=</span><span class="sc11">max</span><span class="sc10">){</span><span class="sc0">
+            </span><span class="sc5">return</span><span class="sc10">;</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">antal_element</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">8</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">text</span><span class="sc10">[]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc6">"   Jag ska delas upp      text   "</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//Pekare till flera char-arrayer:
+</span><span class="sc0">    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">delar</span><span class="sc10">[</span><span class="sc11">antal_element</span><span class="sc10">];</span><span class="sc0">
+    </span><span class="sc11">split</span><span class="sc10">(</span><span class="sc11">text</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">delar</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">antal_element</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc2">//För utskrift:
+</span><span class="sc0">    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">&lt;</span><span class="sc11">antal_element</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"text[%d] %s\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">delar</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]);</span><span class="sc0">
+    </span><span class="sc10">}</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+
+
+</span><span class="sc1">/* Författarens:
+void split(char *s, char *tab[], int max) {
+  int i;
+  for (i=0; i&lt;max; i++)
+    tab[i] = 0;     //sätter tomma pekare.
+  for (i=0; i&lt;max; i++) {
+    while (*s &amp;&amp; *s == ' ')  //letar mellanslag i början?
+      s++;
+    if (!*s)                    //om nolltecken hittas?
+      return;               //avslutar void-funk
+    tab[i] = s;
+    while (*s &amp;&amp; *s != ' ') 
+      s++;
+    if (!*s)
+      return;
+    *s++ = '\0';
+  }  
+}
+
+
+// Testprogram, ingick inte i uppgiften
+#include &lt;stdio.h&gt;
+#define N 10
+int main() {
+  int i;
+  char txt[] = "Nu lär  vi  oss C! ";
+  char *tokens[N];
+  split(txt, tokens, N);
+  for (i=0; i&lt; N &amp;&amp; tokens[i]; i++) 
+    printf("%s\n", tokens[i]);
+} */</span></div></body>
+</html>

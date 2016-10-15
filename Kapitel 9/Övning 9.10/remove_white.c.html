@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<title>Exported from Notepad++</title>
+<style type="text/css">
+span {
+	font-family: 'Verdana';
+	font-size: 8pt;
+	color: #E0E2E4;
+}
+.sc0 {
+}
+.sc1 {
+	color: #66747B;
+}
+.sc2 {
+	color: #66747B;
+}
+.sc4 {
+	color: #FFCD22;
+}
+.sc5 {
+	font-weight: bold;
+	color: #93C763;
+}
+.sc6 {
+	color: #EC7600;
+}
+.sc7 {
+	color: #FF8409;
+}
+.sc9 {
+	color: #A082BD;
+}
+.sc10 {
+	color: #E8E2B7;
+}
+.sc11 {
+}
+.sc16 {
+	color: #678CB1;
+}
+</style>
+</head>
+<body>
+<div style="float: left; white-space: pre; line-height: 1; background: #000000; "><span class="sc9">#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+</span><span class="sc0">
+</span><span class="sc1">/*
+Övning 9.10, Sida 213
+
+Skriv en funktion remove_white, som kopierar en text till
+en sträng från en annan, samt tar bort alla vita tecken.
+
+Funktionen ska ha två pekare: to &amp; from som parametrar.
+*/</span><span class="sc0">
+
+</span><span class="sc1">/* Funktion som kopierar text från en sträng till en annan
+och plockar bort alla vita tecken. */</span><span class="sc0">
+</span><span class="sc16">void</span><span class="sc0"> </span><span class="sc11">remove_white</span><span class="sc10">(</span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">to</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc10">*</span><span class="sc11">from</span><span class="sc10">){</span><span class="sc0">
+    </span><span class="sc2">//raknare används för array-indexnummer i 'to'-strängen
+</span><span class="sc0">    </span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">raknare</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc2">//for-loop som kör så länge ett noll-tecken inte hittas i 'from'-strängen
+</span><span class="sc0">    </span><span class="sc5">for</span><span class="sc10">(</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">i</span><span class="sc10">=</span><span class="sc4">0</span><span class="sc10">;</span><span class="sc11">from</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">]!=</span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc11">i</span><span class="sc10">++){</span><span class="sc0">
+        </span><span class="sc2">//if-sats som triggar om tecken inte är ett vitt tecken (! inverterar)
+</span><span class="sc0">        </span><span class="sc5">if</span><span class="sc10">(!</span><span class="sc11">isspace</span><span class="sc10">(</span><span class="sc11">from</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">])){</span><span class="sc0">
+        </span><span class="sc11">to</span><span class="sc10">[</span><span class="sc11">raknare</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc11">from</span><span class="sc10">[</span><span class="sc11">i</span><span class="sc10">];</span><span class="sc0">
+        </span><span class="sc11">raknare</span><span class="sc10">++;</span><span class="sc0">
+        </span><span class="sc10">}</span><span class="sc0"> 
+    </span><span class="sc10">}</span><span class="sc0">
+    </span><span class="sc2">//sätter nolltecken i slutet av strängen.
+</span><span class="sc0">    </span><span class="sc11">to</span><span class="sc10">[</span><span class="sc11">raknare</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc7">'\0'</span><span class="sc10">;</span><span class="sc0">
+</span><span class="sc10">}</span><span class="sc0">
+
+</span><span class="sc16">int</span><span class="sc0"> </span><span class="sc11">main</span><span class="sc10">(){</span><span class="sc0">
+    </span><span class="sc2">//textsträngar för test av funktionen, samt utskrifter före och efter funktionens anrop
+</span><span class="sc0">    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">till</span><span class="sc10">[</span><span class="sc4">25</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc6">"1 2 3 4 5 6 7 8 9 10 11"</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc16">char</span><span class="sc0"> </span><span class="sc11">fran</span><span class="sc10">[</span><span class="sc4">25</span><span class="sc10">]</span><span class="sc0"> </span><span class="sc10">=</span><span class="sc0"> </span><span class="sc6">"U T A N S P A C E"</span><span class="sc10">;</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"FRÅN: %s\nTILL: %s\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">fran</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">till</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">remove_white</span><span class="sc10">(</span><span class="sc11">till</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">fran</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">puts</span><span class="sc10">(</span><span class="sc6">"-------------------"</span><span class="sc10">);</span><span class="sc0">
+    </span><span class="sc11">printf</span><span class="sc10">(</span><span class="sc6">"TILL EFTER FUNKTION: %s\n"</span><span class="sc10">,</span><span class="sc0"> </span><span class="sc11">till</span><span class="sc10">);</span><span class="sc0">
+</span><span class="sc10">}</span></div></body>
+</html>

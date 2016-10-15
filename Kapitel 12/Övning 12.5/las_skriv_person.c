@@ -29,7 +29,7 @@ void las_person(struct person *p){
 	printf("Singel?: ");
 	char svar_singel[20];
 	scanf("%s", svar_singel);
-	if(tolower(svar_singel[0] == 'j')){
+	if(tolower(svar_singel[0]) == 'j'){
 		p -> singel = 1;
 	}
 	else {

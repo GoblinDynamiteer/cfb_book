@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "bil.h"
 
-/* Övning 12.2, Sida 2286
+/* Övning 12.2, Sida 286
 
 Skapa två bilar för struct 'bil' som skapades i övning 12.1
 Initiera den ena bilen på ett lämpligt sätt.

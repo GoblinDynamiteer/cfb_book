@@ -1,5 +1,5 @@
 #include <stdio.h>
-#inlcude "bil.h";
+#include "bil.h"
 
 /* Övning 12.1, Sida 281
 

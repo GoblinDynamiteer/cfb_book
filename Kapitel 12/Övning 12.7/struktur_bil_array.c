@@ -2,7 +2,7 @@
 #include <string.h>
 #include "bil.h" //Deklaration av struct bil
 
-/* Övning 12.47, Sida 302
+/* Övning 12.7, Sida 302
 
 Gör om programmet i övning 12.3.
 Gör ett fält med tre bilar!

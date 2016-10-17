@@ -18,6 +18,11 @@ Använd rand() i stdlib.harderr
 Leken ska sedan delas ut, upprepade gånger. Användaren
 ska ange hur många kort denne vill ha vid varje utdelning! */
 
+
+//!Uppdatera kommentarer..
+
+
+
 struct kort{
 	int farg; //0: Hjärter, 1: Ruter, 2:Spader, 3: Klöver
 	int varde; //1: ess 11:knekt 12: dam 13:kung
@@ -26,18 +31,10 @@ struct kort{
 void blandaKort(struct kort *k, int n);
 void delaUtKort(struct kort *k, int n);
 	
-
 int main(){
-	 //KOLLA OM FUNK BEHÖVER EGEN
 	struct kort kortlek1[52];
-	char *kort_farg[4] ={
-		"Hjärter",
-		"Ruter",
-		"Spader",
-		"Klöver"
-	};
 	//sätt värden:
-	int kort_nr = 0, raknare = 0;
+	int kort_nr = 0, raknare = 0, spader = 9827;
 	while(kort_nr < 52)
 		for(int farg = 0;farg<4;farg++){
 			for(int varde=1;varde<14;varde++){
@@ -45,49 +42,62 @@ int main(){
 				kortlek1[kort_nr++].varde = varde;
 			}
 		}
-	int antalBlandningar;
+	int antal;
 	printf("Hur många gånger ska kort byta plats? :");
-	scanf("%d", &antalBlandningar);
-	blandaKort(kortlek1, antalBlandningar);
+	scanf("%d", &antal);
+	blandaKort(kortlek1, antal);
 	
-	printf("Hur många gånger ska kort byta plats? :");
-	scanf("%d", &antalBlandningar);
-	
+	printf("Blandning klar!\nHur många kort vill du ha? :");
+	while(1){
+		scanf("%d", &antal);
+		printf("------------------------------\n");
+		printf("Du fick kort:\n");
+		delaUtKort(kortlek1, antal);
+		putchar(spader);
+		printf("%c", spader);
+		printf("------------------------------\n");
+		printf("Fler kort: ");
+	}
+	return 0;
+}
 
 //n = antal kort spelaren vill ha
-	void delaUtKort(struct kort *k, int n){
-		static int kort_kvar = 52;
-		while(kort_nr < 52){
-			for(int farg = 0;farg<4;farg++){
-				for(int varde=1;varde<14;varde++){
-					//Färg:
-					printf("Kort nr %d: ", raknare);
-					raknare++;
-					printf("%s ",kort_farg[ kortlek1[kort_nr].farg ]);
-					//Värde
-					switch(kortlek1[kort_nr].varde){
-						case 1: 
-							printf("Ess\n");
-							break;
-						case 11: 
-							printf("Knekt\n");
-							break;
-						case 12: 
-							printf("Dam\n");
-							break;
-						case 13: 
-							printf("Kung\n");
-							break;
-						default:
-							printf("%d\n",kortlek1[kort_nr].varde);
-					}
-					kort_nr++;
+void delaUtKort(struct kort *k, int n){
+	char *kort_farg[4] ={
+		"Hjärter",
+		"Ruter",
+		"Spader",
+		"Klöver"
+	};
+	static int kort_nr = 0;
+	while(n--){
+				//Färg:
+				if(kort_nr == 52){
+					printf("\nSlut på kort!");
+					exit(0);
 				}
+				printf("%s ", kort_farg[ (k+kort_nr) -> farg ]  );
+				//Värde
+				switch(  (k+kort_nr) -> varde  ){
+					case 1: 
+						printf("Ess\n");
+						break;
+					case 11: 
+						printf("Knekt\n");
+						break;
+					case 12: 
+						printf("Dam\n");
+						break;
+					case 13: 
+						printf("Kung\n");
+						break;
+					default:
+						printf("%d\n", (k+kort_nr) -> varde);
+				}
+				kort_nr++;
 			}
-		}
-		//printf("Hittade %d st kort i leken", raknare);
-		return 0;
-}
+		printf("(%d kort kvar)\n", 52 - kort_nr);
+	return;
 }
 
 void blandaKort(struct kort *k, int n){

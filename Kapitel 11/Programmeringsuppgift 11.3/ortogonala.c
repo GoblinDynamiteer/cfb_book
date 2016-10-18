@@ -21,8 +21,8 @@ b	3		-1		0
 
 _Bool arOrto(int *a, int *b, int n){
 	int summa = 0;
-	for(int *pekare = a;pekare<a+n;pekare++,b++){
-		summa += *pekare**b;
+	for(int *pekare = a;pekare<a+n;summa += *pekare++ * *b++){
+		//summa += *pekare**b;
 		//printf("%d\t", summa);
 	}
 	//returnerar 1 om summa är 0, annars 1
@@ -31,7 +31,7 @@ _Bool arOrto(int *a, int *b, int n){
 
 int main(){
 	int a[3] = {1,3,2};
-	int b[3] = {3,-1,1};
+	int b[3] = {3,-1,0};
 	if(arOrto(a,b,3)){
 		printf("Orto!");
 	}

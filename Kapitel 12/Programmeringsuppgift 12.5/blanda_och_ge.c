@@ -53,6 +53,8 @@ int main(){
 		printf("------------------------------\n");
 		printf("Du fick kort:\n");
 		delaUtKort(kortlek1, antal);
+		putchar(spader);
+		printf("%c", spader);
 		printf("------------------------------\n");
 		printf("Fler kort: ");
 	}

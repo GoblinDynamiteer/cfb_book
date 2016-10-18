@@ -6,6 +6,8 @@
 #include "abonnemang.h"
 #define N 100
 
+
+//hej!
 double pris(const struct abonnemang *p, int min, double gb){
 	double antal_min = fmax(min - p->fria_min, 0);
 	double antal_gb = fmax(gb - p->fria_gb, 0);

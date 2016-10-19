@@ -26,7 +26,7 @@ int main(){
 		n++; //Räknar antal abonnemang i filen
 	}
 	sortera(a, n);
-	
+	//Skriv ut den sorterade listan
 	for(int i=0;i<n;i++){
 		printf("Namn: %s\nPer månad %.2f kr\nGratisminuter: %d\nPris per min: %.2f kr\nFri surf: %.2f GB\nPris per GB: %.2f kr\n\n", 
 		a[i].namn,
@@ -37,15 +37,14 @@ int main(){
 		a[i].extra_gb
 		);
 	}
-
 }
 
 void sortera(struct abonnemang *a, int antal){
 	struct abonnemang *temp;// = malloc(strlkStruct);
-	// printf("Funktion: a0 namn %s\n", a -> namn);
-	// printf("Funktion: a0 gig %.2f\n", a -> fria_gb);
-	// printf("Funktion: a1 namn %s\n", (a+1) -> namn);
-	// printf("Funktion: a1 gig %.2f\n", (a+1) -> fria_gb);
+	printf("Funktion: a0 namn %s\n", a -> namn);
+	printf("Funktion: a0 gig %.2f\n", a -> fria_gb);
+	printf("Funktion: a1 namn %s\n", (a+1) -> namn);
+	printf("Funktion: a1 gig %.2f\n", (a+1) -> fria_gb);
 	
 	for(int i = 0;i<antal;i++){
 		int max = i;
@@ -55,12 +54,9 @@ void sortera(struct abonnemang *a, int antal){
 				max = j;
 			}
 		}
-		temp = a+i; //Hur sätta structpekare till varandras värde?!
-		a+i = (a+max);
-		a = temp;
-		//a+max = temp;
-		//printf("Största är %s med %2.f GB!\n\n", (a+max) -> namn, (a+max) -> fria_gb); //test
-		printf("temp  -> fria_gb %2.f GB!\n", temp  -> fria_gb); //test
+		temp = *(a+i);		//Hur sätta structpekare till varandras värde?!
+		*(a+i) = *(a+max);
+		*(a+max) = temp;
 	}
 	return;
 }

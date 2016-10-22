@@ -8,7 +8,7 @@
 #define FCY "\x1b[36m" 	//Ljusblå (cyan)
 #define FRO "\x1b[31m"
 
-/* Övning 13.5
+/* Övning 13.5, Sida 328
 Antag att du ska söka igenom ett fält med 100000 element
 Hur många tal måste du maximalt undersöka om du använder
 

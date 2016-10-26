@@ -2,6 +2,10 @@
 #include <float.h> //innehåller information om decimalsäkerhet för datatyper
 #include <stdio.h>
 
+/* Övning 2.4, Sida 40
+Skriv ett program som skriver ut det största och minsta tal en variabel av typen int kan lagra.
+Skriv också ut hur många decimalers noggrannhet man får med typerna double och float. */
+
 int main()
 {
 	//INT_MAX är en konstant från limits.h som innehåller det största värdet som kan lagras i en var av typen int

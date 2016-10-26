@@ -1,0 +1,1 @@
+gcc lista_max.c list.c libtxt.c -o lista_max.exe

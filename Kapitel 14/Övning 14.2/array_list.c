@@ -20,7 +20,7 @@ struct array_list *new_list(void) {
 
 void *get_elem(struct array_list *l, int index) {
   if (index >= 0 && index < l->n){
-	printf(FORM_MAGENTA"[Returnerar pekare på element %d]\n"FORM_END, index);
+	printf("["FORM_MAGENTA"Returnerar pekare på element %d"FORM_END"]\n", index);
     return l->a[index];
   }
   else
@@ -34,7 +34,7 @@ int size(struct array_list *l) {
 _Bool add_last(struct array_list *l, void *new_data) {
   if (l->n < CAPACITY) {
     l->a[l->n++] = new_data;
-	printf(FORM_MAGENTA"[Lade till pekare på plats %d]\n"FORM_END, (l->n)-1);
+	printf("["FORM_MAGENTA"Lade till pekare på plats %d"FORM_END"]\n", (l->n)-1);
     return 1;
   }
   else
@@ -47,11 +47,11 @@ Funktionen ska returnera en pekare till det borttagna elementet om det gick bra,
 
 void *remove_last(struct array_list *l){
 	if(l->n == 0){ //Om arrayens n är 0, n håller värde för antal element i arrayen
-		printf(FORM_MAGENTA"Return NULL\n"FORM_END);
+		printf("["FORM_MAGENTA"Return NULL"FORM_END"]\n");
 		return NULL;
 	}
 	else {
-		printf(FORM_MAGENTA"[Tog bort pekare på index %d]\n"FORM_END, (l->n)-1);
+		printf("["FORM_MAGENTA"Tog bort pekare på index %d"FORM_END"]\n", (l->n)-1);
 		l->n--; /*minska n med 1, "plockar bort" sista element. Pekaren finns kvar, 
 		men platsen kommer skrivas över om ny inmatning görs */
 		return l->a[l->n];

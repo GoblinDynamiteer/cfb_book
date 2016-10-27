@@ -13,10 +13,11 @@ int main(){
 	system("cls");
 	//För att sätta värden till listan
 	printf("Skriv in värde: ");
-	while((scanf("%d", &nummer) == 1  )){
-		pnummer = malloc(sizeof(int)); //Detta verkar behöva göras för varje varv, det går inte att initiera pekaren ovan till malloc
-		*pnummer = nummer;
-		printf(FORM_MAGENTA"pnummer pekar på värdet:"FORM_UNDER"%d"FORM_END"\n", *pnummer);
+	while((scanf("%d", &nummer) == 1 )){
+		pnummer = malloc(sizeof(int)); //Allokerar nytt minnesplats för pekaren
+		printf("["FORM_CYAN"pnummer address:"FORM_UNDER"%p"FORM_END"]\n", pnummer);
+		*pnummer = nummer; //Värde i minnesplatsen sätts till den inmatade värdet från användaren
+		printf("["FORM_MAGENTA"pnummer värde:"FORM_UNDER"%d"FORM_END"]\n", *pnummer);
 		add_last(lista, pnummer); //array_list.c - add_last - lägger till värde sist i lista.
 		printf("Skriv in värde (avsluta med ctrl+z): ");
 	}
@@ -24,11 +25,11 @@ int main(){
 	while(1){
 		pnummer = remove_last(lista); //remove_last funktionen i uppgiften
 		if(pnummer == NULL){
-			printf(FORM_RED"Pekare är NULL!"FORM_END);
+			printf("["FORM_RED"Pekare är NULL!"FORM_END"]");
 			break;
 		}
-		printf("Tog bort sista element, värde: %d\n", *pnummer);
-		printf("Antal element kvar: %d\n", size(lista));
+		printf("[Tog bort sista element, värde: %d]\n", *pnummer);
+		printf("[Antal element kvar: %d]\n", size(lista));
 	}
 	return 0;
 }

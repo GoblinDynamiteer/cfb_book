@@ -1,0 +1,1 @@
+gcc temp_rep.c libtxt.c temp_main_rep.c -o temp_rep.exe

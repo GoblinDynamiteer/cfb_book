@@ -2,7 +2,10 @@
 #include <string.h>
 #include <ctype.h>
 
-/* Skriv en funktion 'ar_anagram', som jämför två textsträngar.
+/*
+Programmeringsuppgift 9.4, Sida 215
+
+Skriv en funktion 'ar_anagram', som jämför två textsträngar.
 Om den ena strängen är ett anagram av den andra, så ska 1
 returneras, annars 0. Funktionen ska vara booleansk typ och
 ha de två textsträngarna som parametrar.

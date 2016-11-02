@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/* 
+Övning 2.8, Sida 48
+Skriv ett program som läser in en varas pris, inklusive moms. 
+Läs in momssatsen, som ett heltal i procent, till en int-variabel. 
+Beräkna och skriv ut: varans pris exklusive moms, samt momsen.
+ */
 int main()
 {
 	float pris; //Pris inklusive moms, kan vara ett decimaltal

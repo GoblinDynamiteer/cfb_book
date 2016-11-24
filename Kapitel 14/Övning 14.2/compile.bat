@@ -1,1 +1,0 @@
-gcc remove_last.c array_list.c libtxt.c -o remove_last.exe

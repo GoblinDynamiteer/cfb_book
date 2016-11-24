@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 /*
-Programmeringsuppgift 8.9, Sida 170
+Programmeringsuppgift 8.9, Sida 180
 
 En array är symmetrisk om den har lika många rader som kolumner
 och om det för varje i och j gäller att a[i][j] == a[j][i].
